@@ -67,6 +67,7 @@ function getHeatState(current, max) {
 
 function ensureCard(key, label) {
   if (renderedCards[key]) return renderedCards[key];
+
   const node = meterCardTemplate.content.firstElementChild.cloneNode(true);
   node.dataset.key = key;
   node.querySelector(".meter-name").textContent = label;
@@ -75,15 +76,18 @@ function ensureCard(key, label) {
   return node;
 }
 
-function animateValue(key, el, start, end, duration = 900) {
+function animateValue(key, el, start, end, duration = 1200) {
   if (animationFrames[key]) cancelAnimationFrame(animationFrames[key]);
+
   const startTime = performance.now();
 
   function step(now) {
     const progress = Math.min((now - startTime) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
     const value = start + (end - start) * eased;
+
     el.textContent = formatMoney(value);
+
     if (progress < 1) {
       animationFrames[key] = requestAnimationFrame(step);
     } else {
@@ -98,29 +102,34 @@ function clearHeat(card) {
   card.classList.remove("warm-card", "hot-card");
   const badge = card.querySelector(".meter-badge");
   const valueNode = card.querySelector(".meter-value");
+
   valueNode.classList.remove("warm-value", "hot-value");
   badge.textContent = "LIVE";
 }
 
 function applyBackground(card, meter) {
   const bg = meter.bg_image || "";
-  if (!bg) {
+  if (bg) {
+    card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${bg})`;
+    card.style.backgroundSize = "110%";
+    card.style.backgroundPosition = "center 60%";
+  } else {
     card.style.backgroundImage = "";
-    return;
   }
-  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${bg})`;
-  card.style.backgroundSize = "110%";
-  card.style.backgroundPosition = "center 60%";
 }
 
 function showHitPopup(name, level, amount, when) {
   if (!hitOverlay) return;
+
   hitGameName.textContent = name || "Jackpot";
   hitLevelName.textContent = level || "";
   hitAmount.textContent = formatMoney(amount || 0);
   hitDateTime.textContent = when || "--";
+
   hitOverlay.classList.remove("hidden");
+
   if (hitPopupTimer) clearTimeout(hitPopupTimer);
+
   hitPopupTimer = setTimeout(() => {
     hitOverlay.classList.add("hidden");
   }, 4500);
@@ -128,9 +137,11 @@ function showHitPopup(name, level, amount, when) {
 
 function detectNewHits(payload) {
   const meters = payload.meters || {};
+
   meterOrder.forEach(({ key, label }) => {
     const meter = meters[key] || {};
     const hit = meter.last_hit || {};
+
     const when = hit.datetime || "--";
     const amount = Number(hit.amount_display || 0);
 
@@ -141,7 +152,12 @@ function detectNewHits(payload) {
 
     if (when !== "--" && seenHitKeys[key] !== when) {
       seenHitKeys[key] = when;
-      showHitPopup(meter.name || label, meter.level_name || "", amount, when);
+      showHitPopup(
+        meter.name || label,
+        meter.level_name || "",
+        amount,
+        when
+      );
     }
   });
 }
@@ -152,6 +168,7 @@ function renderMeters(payload) {
   meterOrder.forEach(({ key, label }) => {
     const meter = meters[key] || {};
     const card = ensureCard(key, label);
+
     const name = meter.name || label;
     const value = Number(meter.display_value || 0);
     const max = parseNumberValue(meter.must_win_max);
@@ -159,6 +176,7 @@ function renderMeters(payload) {
 
     card.querySelector(".meter-name").textContent = name;
     card.querySelector(".meter-id").textContent = meter.level_name || "";
+
     applyBackground(card, meter);
     clearHeat(card);
 
@@ -175,11 +193,12 @@ function renderMeters(payload) {
     }
 
     const el = card.querySelector(".meter-value");
+
     if (!(key in previousValues)) {
       previousValues[key] = value;
       el.textContent = formatMoney(value);
     } else if (previousValues[key] !== value) {
-      animateValue(key, el, previousValues[key], value);
+      animateValue(key, el, previousValues[key], value, 600);
     }
 
     card.querySelector(".meter-raw-value").textContent = meter.must_win_max
@@ -198,11 +217,18 @@ function renderLastHits(payload) {
 
     card.querySelector(".meter-name").textContent = meter.name || label;
     card.querySelector(".meter-id").textContent = meter.level_name || "";
+
     applyBackground(card, meter);
     clearHeat(card);
-    card.querySelector(".meter-badge").textContent = "HIT";
-    card.querySelector(".meter-value").textContent = formatMoney(Number(hit.amount_display || 0));
-    card.querySelector(".meter-raw-value").textContent = hit.datetime || "--";
+
+    const badge = card.querySelector(".meter-badge");
+    badge.textContent = "HIT";
+
+    const amount = Number(hit.amount_display || 0);
+    card.querySelector(".meter-value").textContent = formatMoney(amount);
+
+    const when = hit.datetime || "--";
+    card.querySelector(".meter-raw-value").textContent = when;
   });
 }
 
@@ -258,10 +284,10 @@ async function loadData() {
       source = "Fallback JSON";
     }
 
-    const signature = JSON.stringify(data?.meters || {});
     markOnline(source);
     lastUpdated.textContent = data.updated_at || "--";
 
+    const signature = JSON.stringify(data?.meters || {});
     if (signature !== lastPayloadSignature) {
       detectNewHits(data);
       if (currentView === "current") {
@@ -291,6 +317,8 @@ function restartPolling() {
 if (currentBtn) {
   currentBtn.onclick = () => {
     currentView = "current";
+    currentBtn.classList.add("active");
+    lastHitsBtn?.classList.remove("active");
     loadData();
   };
 }
@@ -298,6 +326,8 @@ if (currentBtn) {
 if (lastHitsBtn) {
   lastHitsBtn.onclick = () => {
     currentView = "hits";
+    lastHitsBtn.classList.add("active");
+    currentBtn?.classList.remove("active");
     loadData();
   };
 }
