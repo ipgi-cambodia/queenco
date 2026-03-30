@@ -140,7 +140,6 @@ background-position:center;
 
 .meter-card{
   padding:20px;
-  filter: brightness(1.1);
   position: relative;
   overflow: hidden;
 }
