@@ -86,7 +86,10 @@ h1{
 position:relative;
 overflow:hidden;
 
-background:rgba(20,10,35,0.45); /* slightly lighter so image shows */
+background: linear-gradient(
+  rgba(10, 5, 20, 0.35),
+  rgba(10, 5, 20, 0.55)
+); /* slightly lighter so image shows */
 backdrop-filter:blur(10px) saturate(120%);
 -webkit-backdrop-filter:blur(10px) saturate(120%);
 
