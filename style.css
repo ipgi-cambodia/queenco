@@ -98,18 +98,6 @@ background-size:cover;
 background-position:center;
 }
 
-background: rgba(20,10,35,0.25); /* slightly lighter so image shows */
-backdrop-filter:blur(10px) saturate(120%);
--webkit-backdrop-filter:blur(10px) saturate(120%);
-
-border:1px solid rgba(255,255,255,0.15);
-border-radius:20px;
-box-shadow:0 18px 40px rgba(0,0,0,.35);
-
-background-size:cover;
-background-position:center;
-}
-
 .status-card{
   display:flex;
   align-items:center;
