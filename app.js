@@ -107,8 +107,7 @@ function buildCard(meta) {
   rawLabel.textContent = "Max:";
   rawValue.textContent = formatMoney(meta.max);
 
-  card.style.backgroundImage =
-    `linear-gradient(rgba(8, 6, 16, 0.58), rgba(8, 6, 16, 0.58)), url(${meta.bg})`;
+  card.style.backgroundImage = `url("${meta.bg}")`;
 
   metersGrid.appendChild(clone);
 
