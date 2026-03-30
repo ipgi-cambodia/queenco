@@ -26,7 +26,7 @@ const CARD_META = [
   { name: "Prosperity - Level 1", bg: "images/prosperity.webp", max: 25000 },
   { name: "Prosperity - Level 2", bg: "images/prosperity.webp", max: 5000 },
   { name: "Dragon's Treasure - Level 1", bg: "images/dt.webp", max: 25000 },
-  { name: "Dragon's Treasure - Level 2", bg: "images/dt", max: 5000 }
+  { name: "Dragon's Treasure - Level 2", bg: "images/dt.webp", max: 5000 }
 ];
 
 /* =========================
