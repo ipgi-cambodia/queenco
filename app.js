@@ -19,14 +19,14 @@ const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
 CARD METADATA (IMPORTANT)
 ========================= */
 const CARD_META = [
-  { name: "KungFu Saga - Level 1", bg: "images/kungfu-level1.webp", max: 30000 },
+  { name: "KungFu Saga - Level 1", bg: "images/kungfu-level1.webp", max: 25000 },
   { name: "KungFu Saga - Level 2", bg: "images/kungfu-level2.webp", max: 5000 },
   { name: "Fighting Dragon - Level 1", bg: "images/fighting-dragon-level1.webp", max: 25000 },
   { name: "Fighting Dragon - Level 2", bg: "images/fighting-dragon-level2.webp", max: 5000 },
-  { name: "Prosperity - Level 1", bg: "images/prosperity-level1.webp", max: 5000 },
+  { name: "Prosperity - Level 1", bg: "images/prosperity-level1.webp", max: 25000 },
   { name: "Prosperity - Level 2", bg: "images/prosperity-level2.webp", max: 5000 },
-  { name: "Dragon's Treasure - Level 1", bg: "images/dragons-treasure-level1.webp", max: 1500 },
-  { name: "Dragon's Treasure - Level 2", bg: "images/dragons-treasure-level2.webp", max: 1500 }
+  { name: "Dragon's Treasure - Level 1", bg: "images/dragons-treasure-level1.webp", max: 25000 },
+  { name: "Dragon's Treasure - Level 2", bg: "images/dragons-treasure-level2.webp", max: 5000 }
 ];
 
 /* =========================
