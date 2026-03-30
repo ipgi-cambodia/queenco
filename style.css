@@ -493,3 +493,42 @@ background-position:center;
     transform: scale(1.05) translateY(1px);
   }
 }
+
+
+/* ---- darker card image overlay + clearer values ---- */
+.meter-card{
+  background-color: rgba(6, 4, 12, 0.72);
+  background-blend-mode: multiply;
+}
+
+.meter-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(4,4,10,0.18) 0%,
+    rgba(4,4,10,0.34) 45%,
+    rgba(4,4,10,0.48) 100%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+
+.meter-top,
+.meter-value,
+.meter-footer{
+  position:relative;
+  z-index:2;
+}
+
+.meter-value{
+  text-shadow:
+    0 0 8px rgba(0,0,0,0.55),
+    0 0 20px rgba(255,212,82,.18),
+    2px 2px 8px rgba(0,0,0,0.55);
+}
+
+.meter-name{
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
