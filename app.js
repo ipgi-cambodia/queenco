@@ -19,13 +19,13 @@ const hitDateTime = document.getElementById("hitDateTime");
 
 const THEME_META = {
   box1: { label: "KungFu Saga - Level 1", level_name: "Level 1", must_win_max: "30,000", bg_image: "images/kungfu-level1.webp" },
-  box2: { label: "KungFu Saga - Level 2", level_name: "Level 2", must_win_max: "3,500", bg_image: "images/kungfu-level2.webp" },
+  box2: { label: "KungFu Saga - Level 2", level_name: "Level 2", must_win_max: "5,000", bg_image: "images/kungfu-level2.webp" },
   box3: { label: "Fighting Dragon - Level 1", level_name: "Level 1", must_win_max: "20,000", bg_image: "images/fighting-dragon-level1.webp" },
-  box4: { label: "Fighting Dragon - Level 2", level_name: "Level 2", must_win_max: "3,500", bg_image: "images/fighting-dragon-level2.webp" },
-  box5: { label: "Prosperity - Level 1", level_name: "Level 1", must_win_max: "20,500", bg_image: "images/prosperity-level1.webp" },
-  box6: { label: "Prosperity - Level 2", level_name: "Level 2", must_win_max: "3,500", bg_image: "images/prosperity-level2.webp" },
-  box7: { label: "Dragon's Treasure - Level 1", level_name: "Level 1", must_win_max: "20,000", bg_image: "images/dragons-treasure-level1.webp" },
-  box8: { label: "Dragon's Treasure - Level 2", level_name: "Level 2", must_win_max: "3,500", bg_image: "images/dragons-treasure-level2.webp" },
+  box4: { label: "Fighting Dragon - Level 2", level_name: "Level 2", must_win_max: "5,000", bg_image: "images/fighting-dragon-level2.webp" },
+  box5: { label: "Prosperity - Level 1", level_name: "Level 1", must_win_max: "20,000", bg_image: "images/prosperity-level1.webp" },
+  box6: { label: "Prosperity - Level 2", level_name: "Level 2", must_win_max: "5,000", bg_image: "images/prosperity-level2.webp" },
+  box7: { label: "Dragon's Treasure - Level 1", level_name: "Level 1", must_win_max: "5,000", bg_image: "images/dragons-treasure-level1.webp" },
+  box8: { label: "Dragon's Treasure - Level 2", level_name: "Level 2", must_win_max: "1,500", bg_image: "images/dragons-treasure-level2.webp" },
 };
 
 const meterOrder = Object.keys(THEME_META).map((key) => ({
@@ -86,6 +86,7 @@ function animateValue(key, el, start, end, duration = 900) {
       animationFrames[key] = requestAnimationFrame(step);
     } else {
       previousValues[key] = end;
+      el.textContent = formatMoney(end);
     }
   }
 
@@ -122,6 +123,19 @@ function showHitPopup(name, level, amount, when) {
   hitPopupTimer = setTimeout(() => hitOverlay.classList.add("hidden"), 4500);
 }
 
+function normalizeLastHit(source, currentValue, payloadUpdatedAt) {
+  if (source && typeof source === "object") {
+    return {
+      amount_display: Number(source.amount_display || source.display_value || source.amount || 0),
+      datetime: source.datetime || source.updated_at || payloadUpdatedAt || "--",
+    };
+  }
+  return {
+    amount_display: 0,
+    datetime: "--",
+  };
+}
+
 function normalizePayload(payload) {
   const sourceMeters = payload?.meters || {};
   const normalized = { updated_at: payload?.updated_at || "--", meters: {} };
@@ -129,15 +143,16 @@ function normalizePayload(payload) {
   meterOrder.forEach(({ key, label }) => {
     const meta = THEME_META[key] || {};
     const source = sourceMeters[key] || {};
+    const displayValue = Number(source.display_value || 0);
     normalized.meters[key] = {
       name: source.name || meta.label || label,
       meter_id: source.meter_id || 0,
-      raw_value: source.raw_value || 0,
-      display_value: Number(source.display_value || 0),
+      raw_value: source.raw_value || Math.round(displayValue * 100),
+      display_value: displayValue,
       level_name: source.level_name || meta.level_name || "",
       must_win_max: source.must_win_max || meta.must_win_max || "",
       bg_image: source.bg_image || meta.bg_image || "",
-      last_hit: source.last_hit || meta.last_hit || { amount_display: 0, datetime: "--" },
+      last_hit: normalizeLastHit(source.last_hit, displayValue, payload?.updated_at),
     };
   });
 
@@ -258,55 +273,68 @@ function setOnlineStatus(modeText) {
   connectionStatus.textContent = modeText;
 }
 
-function setOfflineStatus() {
-  statusDot.classList.remove("online");
-  connectionStatus.textContent = "Waiting for data...";
+function setButtons() {
+  if (currentBtn) currentBtn.classList.toggle("active", currentView === "current");
+  if (lastHitsBtn) lastHitsBtn.classList.toggle("active", currentView === "hits");
+}
+
+function startPolling() {
+  if (pollTimer) clearInterval(pollTimer);
+  const interval = document.hidden ? HIDDEN_POLL_MS : POLL_MS;
+  pollTimer = setInterval(loadData, interval);
 }
 
 async function loadData() {
   try {
-    let raw = null;
-    let statusText = "Connected";
+    let data = null;
+    let sourceLabel = "JSON Fallback";
 
-    if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
-      raw = await fetchSupabasePayload();
-      statusText = "Supabase";
+    try {
+      data = await fetchSupabasePayload();
+      if (data) sourceLabel = "Supabase";
+    } catch (e) {
+      console.warn("Supabase fetch failed, fallback to JSON:", e);
     }
 
-    if (!raw) {
-      raw = await fetchJsonPayload();
-      statusText = "JSON Fallback";
+    if (!data) {
+      data = await fetchJsonPayload();
+      sourceLabel = "JSON Fallback";
     }
 
-    const data = normalizePayload(raw || {});
-    const hash = JSON.stringify(data);
-    setOnlineStatus(statusText);
-    lastUpdated.textContent = data.updated_at || "--";
+    const normalized = normalizePayload(data);
+    const payloadHash = JSON.stringify(normalized);
 
-    if (hash === lastPayloadHash && currentView === "current") return;
-    lastPayloadHash = hash;
+    detectNewHits(normalized);
 
-    detectNewHits(data);
-    if (currentView === "current") {
-      renderMeters(data);
+    if (payloadHash !== lastPayloadHash) {
+      lastPayloadHash = payloadHash;
+      if (currentView === "current") {
+        renderMeters(normalized);
+      } else {
+        renderLastHits(normalized);
+      }
     } else {
-      renderLastHits(data);
+      if (currentView === "current") {
+        renderMeters(normalized);
+      } else {
+        renderLastHits(normalized);
+      }
     }
+
+    setOnlineStatus(sourceLabel);
+    lastUpdated.textContent = normalized.updated_at || "--";
   } catch (err) {
     console.error(err);
-    setOfflineStatus();
+    statusDot.classList.remove("online");
+    connectionStatus.textContent = "Waiting for data...";
+    lastUpdated.textContent = "--";
   }
-}
-
-function updateActiveButtons() {
-  currentBtn?.classList.toggle("active", currentView === "current");
-  lastHitsBtn?.classList.toggle("active", currentView === "hits");
 }
 
 if (currentBtn) {
   currentBtn.onclick = () => {
     currentView = "current";
-    updateActiveButtons();
+    setButtons();
     loadData();
   };
 }
@@ -314,17 +342,13 @@ if (currentBtn) {
 if (lastHitsBtn) {
   lastHitsBtn.onclick = () => {
     currentView = "hits";
-    updateActiveButtons();
+    setButtons();
     loadData();
   };
 }
 
-function restartPolling() {
-  if (pollTimer) clearInterval(pollTimer);
-  pollTimer = setInterval(loadData, document.hidden ? HIDDEN_POLL_MS : POLL_MS);
-}
+document.addEventListener("visibilitychange", startPolling);
 
-document.addEventListener("visibilitychange", restartPolling);
-updateActiveButtons();
+setButtons();
 loadData();
-restartPolling();
+startPolling();
