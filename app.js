@@ -1,4 +1,3 @@
-
 const POLL_MS = 3000;
 const ANIMATION_MS = 900;
 
@@ -16,7 +15,6 @@ const cardElements = new Map();
 
 let lastPayloadHash = "";
 let currentView = "current";
-
 
 /* =========================
 CONFIG
@@ -67,6 +65,7 @@ function animateValue(el, from, to, duration = ANIMATION_MS) {
   if (el._animFrame) {
     cancelAnimationFrame(el._animFrame);
   }
+
   const start = performance.now();
   const diff = to - from;
 
@@ -74,6 +73,7 @@ function animateValue(el, from, to, duration = ANIMATION_MS) {
     const t = Math.min((now - start) / duration, 1);
     const eased = easeOutCubic(t);
     const current = from + diff * eased;
+
     el.textContent = formatMoney(current);
 
     if (t < 1) {
@@ -111,10 +111,11 @@ async function fetchSupabasePayload() {
 }
 
 /* =========================
-CARD BUILD / UPDATE
+BUILD CURRENT VIEW CARDS
 ========================= */
 function buildCard(meta) {
   const clone = template.content.cloneNode(true);
+
   const card = clone.querySelector(".meter-card");
   const name = clone.querySelector(".meter-name");
   const val = clone.querySelector(".meter-value");
@@ -127,6 +128,8 @@ function buildCard(meta) {
   rawValue.textContent = formatMoney(meta.max);
 
   card.style.backgroundImage = `url("${meta.bg}")`;
+  card.style.backgroundSize = "cover";
+  card.style.backgroundPosition = "center";
 
   metersGrid.appendChild(clone);
 
@@ -140,7 +143,8 @@ function buildCard(meta) {
 }
 
 function ensureCards() {
-  if (cardElements.size === CARD_META.length) return;
+  if (cardElements.size === CARD_META.length && currentView === "current") return;
+
   metersGrid.innerHTML = "";
   cardElements.clear();
 
@@ -176,12 +180,46 @@ function updateCard(meta, meterData) {
   }
 }
 
-function render(data) {
+function renderCurrent(data) {
   ensureCards();
 
   CARD_META.forEach((meta) => {
     const meter = data?.meters?.[meta.key] || {};
     updateCard(meta, meter);
+  });
+}
+
+/* =========================
+RENDER LAST HIT VIEW
+========================= */
+function renderLastHits() {
+  metersGrid.innerHTML = "";
+  cardElements.clear();
+
+  CARD_META.forEach((meta) => {
+    const hit = LAST_HIT_META[meta.key] || { amount: 0, date: "--", time: "--" };
+
+    const clone = template.content.cloneNode(true);
+
+    const card = clone.querySelector(".meter-card");
+    const name = clone.querySelector(".meter-name");
+    const val = clone.querySelector(".meter-value");
+    const badge = clone.querySelector(".meter-badge");
+    const rawLabel = clone.querySelector(".meter-raw-label");
+    const rawValue = clone.querySelector(".meter-raw-value");
+
+    name.textContent = meta.name;
+    val.textContent = formatMoney(hit.amount);
+
+    badge.textContent = "HIT";
+    rawLabel.textContent = hit.date;
+    rawValue.textContent = hit.time;
+
+    card.style.backgroundImage = `url("${meta.bg}")`;
+    card.style.backgroundSize = "cover";
+    card.style.backgroundPosition = "center";
+
+    metersGrid.appendChild(clone);
   });
 }
 
@@ -199,107 +237,21 @@ function setOffline() {
 }
 
 /* =========================
-RENDER CURRENT
-========================= */
-function render(data) {
-  metersGrid.innerHTML = "";
-
-  CARD_META.forEach((meta) => {
-    const meter = data?.meters?.[meta.box] || {};
-    const value = Number(meter.display_value || 0);
-
-    const clone = template.content.cloneNode(true);
-
-    const card = clone.querySelector(".meter-card");
-    const name = clone.querySelector(".meter-name");
-    const val = clone.querySelector(".meter-value");
-    const badge = clone.querySelector(".meter-badge");
-    const rawLabel = clone.querySelector(".meter-raw-label");
-    const rawValue = clone.querySelector(".meter-raw-value");
-
-    name.textContent = meta.name;
-
-    animateValue(val, 0, value);
-
-    rawLabel.textContent = "Max:";
-    rawValue.textContent = meta.max.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-
-    card.style.backgroundImage = `url("${meta.bg}")`;
-    card.style.backgroundSize = "cover";
-    card.style.backgroundPosition = "center";
-
-    const percent = value / meta.max;
-
-    card.classList.remove("warm-card", "hot-card");
-    badge.textContent = "LIVE";
-
-    if (percent >= 0.9) {
-      card.classList.add("hot-card");
-      badge.textContent = "HOT";
-    } else if (percent >= 0.7) {
-      card.classList.add("warm-card");
-    }
-
-    metersGrid.appendChild(clone);
-  });
-}
-
-/* =========================
-RENDER LAST HIT
-========================= */
-function renderLastHits() {
-  metersGrid.innerHTML = "";
-
-  CARD_META.forEach((meta) => {
-    const hit = LAST_HIT_META[meta.box];
-
-    const clone = template.content.cloneNode(true);
-
-    const card = clone.querySelector(".meter-card");
-    const name = clone.querySelector(".meter-name");
-    const val = clone.querySelector(".meter-value");
-    const badge = clone.querySelector(".meter-badge");
-    const rawLabel = clone.querySelector(".meter-raw-label");
-    const rawValue = clone.querySelector(".meter-raw-value");
-
-    name.textContent = meta.name;
-
-    val.textContent = Number(hit.amount).toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-
-    badge.textContent = "HIT";
-    rawLabel.textContent = hit.date;
-    rawValue.textContent = hit.time;
-
-    card.style.backgroundImage = `url("${meta.bg}")`;
-
-    metersGrid.appendChild(clone);
-  });
-}
-
-/* =========================
 BUTTON SWITCH
 ========================= */
-btnCurrent.addEventListener("click", () => {
+btnCurrent?.addEventListener("click", () => {
   currentView = "current";
   btnCurrent.classList.add("active");
-  btnLast.classList.remove("active");
+  btnLast?.classList.remove("active");
   loadData();
 });
 
-btnLast.addEventListener("click", () => {
+btnLast?.addEventListener("click", () => {
   currentView = "last";
   btnLast.classList.add("active");
-  btnCurrent.classList.remove("active");
+  btnCurrent?.classList.remove("active");
   renderLastHits();
 });
-
-
 
 /* =========================
 MAIN LOOP
@@ -307,14 +259,18 @@ MAIN LOOP
 async function loadData() {
   try {
     const data = await fetchSupabasePayload();
-
     if (!data) throw new Error("No data");
 
     const hash = JSON.stringify(data);
 
     if (hash !== lastPayloadHash) {
       lastPayloadHash = hash;
-      render(data);
+
+      if (currentView === "current") {
+        renderCurrent(data);
+      } else {
+        renderLastHits();
+      }
     }
 
     setOnline();
@@ -325,6 +281,5 @@ async function loadData() {
   }
 }
 
-ensureCards();
 loadData();
 setInterval(loadData, POLL_MS);
