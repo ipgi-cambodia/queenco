@@ -13,8 +13,7 @@ const btnLast = document.getElementById("btnLastJackpotHits");
 
 let lastPayloadHash = "";
 let currentView = "current";
-const renderedValues = new Map();
-const cardElements = new Map();
+
 
 /* =========================
 CONFIG
