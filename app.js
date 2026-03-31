@@ -11,6 +11,9 @@ const lastUpdated = document.getElementById("lastUpdated");
 const btnCurrent = document.getElementById("btnCurrentJackpot");
 const btnLast = document.getElementById("btnLastJackpotHits");
 
+const renderedValues = new Map();
+const cardElements = new Map();
+
 let lastPayloadHash = "";
 let currentView = "current";
 
