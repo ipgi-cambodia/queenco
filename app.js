@@ -239,12 +239,22 @@ function setOffline() {
 /* =========================
 BUTTON SWITCH
 ========================= */
-btnCurrent?.addEventListener("click", () => {
+btnCurrent?.addEventListener("click", async () => {
   currentView = "current";
   btnCurrent.classList.add("active");
   btnLast?.classList.remove("active");
-  loadData();
-});
+
+  try {
+    const data = await fetchSupabasePayload();
+    if (data) {
+      renderCurrent(data);
+      setOnline();
+      lastUpdated.textContent = data.updated_at || "--";
+    }
+  } catch (err) {
+    console.warn(err);
+    loadData();
+  }
 
 btnLast?.addEventListener("click", () => {
   currentView = "last";
@@ -262,16 +272,25 @@ async function loadData() {
     if (!data) throw new Error("No data");
 
     const hash = JSON.stringify(data);
+    const dataChanged = hash !== lastPayloadHash;
 
-    if (hash !== lastPayloadHash) {
-      lastPayloadHash = hash;
+    lastPayloadHash = hash;
 
-      if (currentView === "current") {
-        renderCurrent(data);
-      } else {
+    if (currentView === "current") {
+      renderCurrent(data);
+    } else {
+      if (dataChanged) {
         renderLastHits();
       }
     }
+
+    setOnline();
+    lastUpdated.textContent = data.updated_at || "--";
+  } catch (err) {
+    console.warn(err);
+    setOffline();
+  }
+}
 
     setOnline();
     lastUpdated.textContent = data.updated_at || "--";
