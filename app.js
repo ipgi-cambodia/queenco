@@ -8,6 +8,9 @@ const statusDot = document.getElementById("statusDot");
 const connectionStatus = document.getElementById("connectionStatus");
 const lastUpdated = document.getElementById("lastUpdated");
 
+const btnCurrent = document.getElementById("btnCurrentJackpot");
+const btnLast = document.getElementById("btnLastJackpotHits");
+
 let lastPayloadHash = "";
 let currentView = "current";
 const renderedValues = new Map();
