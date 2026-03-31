@@ -33,6 +33,20 @@ const CARD_META = [
   { key: "box8", name: "Dragon's Treasure - Level 2", bg: "images/dt.webp", max: 1500 }
 ];
 
+/* =========================
+LAST HIT DATA (TEMP)
+========================= */
+const LAST_HIT_META = {
+  box1: { amount: 15000, date: "2026-03-28", time: "18:42" },
+  box2: { amount: 5000,  date: "2026-03-29", time: "19:11" },
+  box3: { amount: 10000, date: "2026-03-27", time: "18:35" },
+  box4: { amount: 3000,  date: "2026-03-29", time: "19:26" },
+  box5: { amount: 15000, date: "2026-03-26", time: "18:57" },
+  box6: { amount: 5000,  date: "2026-03-28", time: "19:33" },
+  box7: { amount: 20000, date: "2026-03-29", time: "18:49" },
+  box8: { amount: 1500,  date: "2026-03-30", time: "19:02" }
+};
+
 function formatMoney(value) {
   return Number(value || 0).toLocaleString(undefined, {
     minimumFractionDigits: 2,
@@ -178,6 +192,109 @@ function setOffline() {
   statusDot.classList.remove("online");
   connectionStatus.textContent = "Waiting for data...";
 }
+
+/* =========================
+RENDER CURRENT
+========================= */
+function render(data) {
+  metersGrid.innerHTML = "";
+
+  CARD_META.forEach((meta) => {
+    const meter = data?.meters?.[meta.box] || {};
+    const value = Number(meter.display_value || 0);
+
+    const clone = template.content.cloneNode(true);
+
+    const card = clone.querySelector(".meter-card");
+    const name = clone.querySelector(".meter-name");
+    const val = clone.querySelector(".meter-value");
+    const badge = clone.querySelector(".meter-badge");
+    const rawLabel = clone.querySelector(".meter-raw-label");
+    const rawValue = clone.querySelector(".meter-raw-value");
+
+    name.textContent = meta.name;
+
+    animateValue(val, 0, value);
+
+    rawLabel.textContent = "Max:";
+    rawValue.textContent = meta.max.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    card.style.backgroundImage = `url("${meta.bg}")`;
+    card.style.backgroundSize = "cover";
+    card.style.backgroundPosition = "center";
+
+    const percent = value / meta.max;
+
+    card.classList.remove("warm-card", "hot-card");
+    badge.textContent = "LIVE";
+
+    if (percent >= 0.9) {
+      card.classList.add("hot-card");
+      badge.textContent = "HOT";
+    } else if (percent >= 0.7) {
+      card.classList.add("warm-card");
+    }
+
+    metersGrid.appendChild(clone);
+  });
+}
+
+/* =========================
+RENDER LAST HIT
+========================= */
+function renderLastHits() {
+  metersGrid.innerHTML = "";
+
+  CARD_META.forEach((meta) => {
+    const hit = LAST_HIT_META[meta.box];
+
+    const clone = template.content.cloneNode(true);
+
+    const card = clone.querySelector(".meter-card");
+    const name = clone.querySelector(".meter-name");
+    const val = clone.querySelector(".meter-value");
+    const badge = clone.querySelector(".meter-badge");
+    const rawLabel = clone.querySelector(".meter-raw-label");
+    const rawValue = clone.querySelector(".meter-raw-value");
+
+    name.textContent = meta.name;
+
+    val.textContent = Number(hit.amount).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    badge.textContent = "HIT";
+    rawLabel.textContent = hit.date;
+    rawValue.textContent = hit.time;
+
+    card.style.backgroundImage = `url("${meta.bg}")`;
+
+    metersGrid.appendChild(clone);
+  });
+}
+
+/* =========================
+BUTTON SWITCH
+========================= */
+btnCurrent.addEventListener("click", () => {
+  currentView = "current";
+  btnCurrent.classList.add("active");
+  btnLast.classList.remove("active");
+  loadData();
+});
+
+btnLast.addEventListener("click", () => {
+  currentView = "last";
+  btnLast.classList.add("active");
+  btnCurrent.classList.remove("active");
+  renderLastHits();
+});
+
+
 
 /* =========================
 MAIN LOOP
