@@ -237,7 +237,27 @@ function renderLastHits(payload = latestPayload) {
   cardElements.clear();
 
   CARD_META.forEach((meta) => {
-    const hit = getResolvedLastHit(payload, meta.key);
+    const liveHit = payload?.meters?.[meta.key]?.last_hit || null;
+
+    let amount = 0;
+    let date = "--";
+    let time = "--";
+
+    if (liveHit && typeof liveHit === "object") {
+      amount = Number(liveHit.amount_display || 0);
+
+      const dt = String(liveHit.datetime || "--").trim();
+      if (dt && dt !== "--") {
+        const parts = dt.split(" ");
+        date = parts[0] || "--";
+        time = parts[1] || "--";
+      }
+    } else {
+      const fallback = LAST_HIT_META[meta.key] || { amount: 0, date: "--", time: "--" };
+      amount = Number(fallback.amount || 0);
+      date = fallback.date || "--";
+      time = fallback.time || "--";
+    }
 
     const clone = template.content.cloneNode(true);
 
@@ -249,11 +269,11 @@ function renderLastHits(payload = latestPayload) {
     const rawValue = clone.querySelector(".meter-raw-value");
 
     name.textContent = meta.name;
-    val.textContent = formatMoney(hit.amount);
+    val.textContent = formatMoney(amount);
 
     badge.textContent = "HIT";
-    rawLabel.textContent = hit.date || "--";
-    rawValue.textContent = hit.time || "--";
+    rawLabel.textContent = date;
+    rawValue.textContent = time;
 
     card.style.backgroundImage = `url("${meta.bg}")`;
     card.style.backgroundSize = "cover";
