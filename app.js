@@ -148,7 +148,7 @@ function ensureCards() {
   metersGrid.innerHTML = "";
   cardElements.clear();
 
-  CARD_META.forEach(meta => buildCard(meta));
+  CARD_META.forEach((meta) => buildCard(meta));
 }
 
 function updateCard(meta, meterData) {
@@ -255,6 +255,7 @@ btnCurrent?.addEventListener("click", async () => {
     console.warn(err);
     loadData();
   }
+});
 
 btnLast?.addEventListener("click", () => {
   currentView = "last";
@@ -278,19 +279,9 @@ async function loadData() {
 
     if (currentView === "current") {
       renderCurrent(data);
-    } else {
-      if (dataChanged) {
-        renderLastHits();
-      }
+    } else if (dataChanged) {
+      renderLastHits();
     }
-
-    setOnline();
-    lastUpdated.textContent = data.updated_at || "--";
-  } catch (err) {
-    console.warn(err);
-    setOffline();
-  }
-}
 
     setOnline();
     lastUpdated.textContent = data.updated_at || "--";
