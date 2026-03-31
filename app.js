@@ -15,6 +15,7 @@ const cardElements = new Map();
 
 let lastPayloadHash = "";
 let currentView = "current";
+let latestPayload = null;
 
 /* =========================
 CONFIG
@@ -37,7 +38,8 @@ const CARD_META = [
 ];
 
 /* =========================
-LAST HIT DATA (TEMP)
+LAST HIT FALLBACK (TEMP)
+Used only if live payload has no last hit data
 ========================= */
 const LAST_HIT_META = {
   box1: { amount: 15000, date: "2026-03-28", time: "18:42" },
@@ -73,7 +75,6 @@ function animateValue(el, from, to, duration = ANIMATION_MS) {
     const t = Math.min((now - start) / duration, 1);
     const eased = easeOutCubic(t);
     const current = from + diff * eased;
-
     el.textContent = formatMoney(current);
 
     if (t < 1) {
@@ -108,6 +109,45 @@ async function fetchSupabasePayload() {
 
   const json = await res.json();
   return json?.[0]?.payload || null;
+}
+
+/* =========================
+PAYLOAD HELPERS
+Supports either:
+payload.last_hits.box1
+or
+payload.meters.box1.last_hit
+========================= */
+function getLiveLastHit(payload, key) {
+  if (!payload) return null;
+
+  const direct = payload.last_hits?.[key];
+  if (direct && (direct.amount != null || direct.date || direct.time)) {
+    return {
+      amount: Number(direct.amount || 0),
+      date: direct.date || "--",
+      time: direct.time || "--"
+    };
+  }
+
+  const nested = payload.meters?.[key]?.last_hit;
+  if (nested && (nested.amount != null || nested.date || nested.time)) {
+    return {
+      amount: Number(nested.amount || 0),
+      date: nested.date || "--",
+      time: nested.time || "--"
+    };
+  }
+
+  return null;
+}
+
+function getResolvedLastHit(payload, key) {
+  return getLiveLastHit(payload, key) || LAST_HIT_META[key] || {
+    amount: 0,
+    date: "--",
+    time: "--"
+  };
 }
 
 /* =========================
@@ -192,12 +232,12 @@ function renderCurrent(data) {
 /* =========================
 RENDER LAST HIT VIEW
 ========================= */
-function renderLastHits() {
+function renderLastHits(payload = latestPayload) {
   metersGrid.innerHTML = "";
   cardElements.clear();
 
   CARD_META.forEach((meta) => {
-    const hit = LAST_HIT_META[meta.key] || { amount: 0, date: "--", time: "--" };
+    const hit = getResolvedLastHit(payload, meta.key);
 
     const clone = template.content.cloneNode(true);
 
@@ -212,8 +252,8 @@ function renderLastHits() {
     val.textContent = formatMoney(hit.amount);
 
     badge.textContent = "HIT";
-    rawLabel.textContent = hit.date;
-    rawValue.textContent = hit.time;
+    rawLabel.textContent = hit.date || "--";
+    rawValue.textContent = hit.time || "--";
 
     card.style.backgroundImage = `url("${meta.bg}")`;
     card.style.backgroundSize = "cover";
@@ -245,8 +285,9 @@ btnCurrent?.addEventListener("click", async () => {
   btnLast?.classList.remove("active");
 
   try {
-    const data = await fetchSupabasePayload();
+    const data = latestPayload || await fetchSupabasePayload();
     if (data) {
+      latestPayload = data;
       renderCurrent(data);
       setOnline();
       lastUpdated.textContent = data.updated_at || "--";
@@ -261,7 +302,7 @@ btnLast?.addEventListener("click", () => {
   currentView = "last";
   btnLast.classList.add("active");
   btnCurrent?.classList.remove("active");
-  renderLastHits();
+  renderLastHits(latestPayload);
 });
 
 /* =========================
@@ -272,15 +313,16 @@ async function loadData() {
     const data = await fetchSupabasePayload();
     if (!data) throw new Error("No data");
 
+    latestPayload = data;
+
     const hash = JSON.stringify(data);
     const dataChanged = hash !== lastPayloadHash;
-
     lastPayloadHash = hash;
 
     if (currentView === "current") {
       renderCurrent(data);
     } else if (dataChanged) {
-      renderLastHits();
+      renderLastHits(data);
     }
 
     setOnline();
