@@ -34,14 +34,14 @@ const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
 CARD METADATA
 ========================= */
 const CARD_META = [
-  { key: "box1", name: "KungFu Saga - Level 1", bg: "images/kungfu.webp", max: 30000 },
-  { key: "box2", name: "KungFu Saga - Level 2", bg: "images/kungfu.webp", max: 5000 },
-  { key: "box3", name: "Fighting Dragon - Level 1", bg: "images/fd.webp", max: 25000 },
-  { key: "box4", name: "Fighting Dragon - Level 2", bg: "images/fd.webp", max: 5000 },
-  { key: "box5", name: "Prosperity - Level 1", bg: "images/prosperity.webp", max: 15000 },
-  { key: "box6", name: "Prosperity - Level 2", bg: "images/prosperity.webp", max: 5000 },
+  { key: "box1", name: "KungFu Saga - Level 1", bg: "images/kungfu.webp", max: 3000 },
+  { key: "box2", name: "KungFu Saga - Level 2", bg: "images/kungfu.webp", max: 3000 },
+  { key: "box3", name: "Fighting Dragon - Level 1", bg: "images/fd.webp", max: 10000 },
+  { key: "box4", name: "Fighting Dragon - Level 2", bg: "images/fd.webp", max: 1500 },
+  { key: "box5", name: "Prosperity - Level 1", bg: "images/prosperity.webp", max: 10000 },
+  { key: "box6", name: "Prosperity - Level 2", bg: "images/prosperity.webp", max: 10000 },
   { key: "box7", name: "Dragon's Treasure - Level 1", bg: "images/dt.webp", max: 20000 },
-  { key: "box8", name: "Dragon's Treasure - Level 2", bg: "images/dt.webp", max: 1500 }
+  { key: "box8", name: "Dragon's Treasure - Level 2", bg: "images/dt.webp", max: 20000 }
 ];
 
 /* =========================
