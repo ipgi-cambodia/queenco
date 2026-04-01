@@ -10,8 +10,15 @@ const lastUpdated = document.getElementById("lastUpdated");
 const btnCurrent = document.getElementById("btnCurrentJackpot");
 const btnLast = document.getElementById("btnLastJackpotHits");
 
+const hitOverlay = document.getElementById("hitOverlay");
+const hitGameName = document.getElementById("hitGameName");
+const hitLevelName = document.getElementById("hitLevelName");
+const hitAmount = document.getElementById("hitAmount");
+const hitDateTime = document.getElementById("hitDateTime");
+
 const renderedValues = new Map();
 const cardElements = new Map();
+const seenHitTimestamps = new Map();
 
 let lastPayloadHash = "";
 let currentView = "current";
@@ -38,18 +45,18 @@ const CARD_META = [
 ];
 
 /* =========================
-LAST HIT FALLBACK (TEMP)
-Used only if live payload has no last hit data
+LAST HIT FALLBACK
+Only used if payload has no live last_hit yet
 ========================= */
 const LAST_HIT_META = {
-  box1: { amount: 15000, date: "2026-03-28", time: "18:42" },
-  box2: { amount: 5000,  date: "2026-03-29", time: "19:11" },
-  box3: { amount: 10000, date: "2026-03-27", time: "18:35" },
-  box4: { amount: 3000,  date: "2026-03-29", time: "19:26" },
-  box5: { amount: 15000, date: "2026-03-26", time: "18:57" },
-  box6: { amount: 5000,  date: "2026-03-28", time: "19:33" },
-  box7: { amount: 20000, date: "2026-03-29", time: "18:49" },
-  box8: { amount: 1500,  date: "2026-03-30", time: "19:02" }
+  box1: { amount: 0, date: "--", time: "--" },
+  box2: { amount: 0, date: "--", time: "--" },
+  box3: { amount: 0, date: "--", time: "--" },
+  box4: { amount: 0, date: "--", time: "--" },
+  box5: { amount: 0, date: "--", time: "--" },
+  box6: { amount: 0, date: "--", time: "--" },
+  box7: { amount: 0, date: "--", time: "--" },
+  box8: { amount: 0, date: "--", time: "--" }
 };
 
 function formatMoney(value) {
@@ -75,6 +82,7 @@ function animateValue(el, from, to, duration = ANIMATION_MS) {
     const t = Math.min((now - start) / duration, 1);
     const eased = easeOutCubic(t);
     const current = from + diff * eased;
+
     el.textContent = formatMoney(current);
 
     if (t < 1) {
@@ -112,42 +120,86 @@ async function fetchSupabasePayload() {
 }
 
 /* =========================
-PAYLOAD HELPERS
-Supports either:
-payload.last_hits.box1
-or
-payload.meters.box1.last_hit
+LAST HIT HELPERS
 ========================= */
 function getLiveLastHit(payload, key) {
   if (!payload) return null;
 
-  const direct = payload.last_hits?.[key];
-  if (direct && (direct.amount != null || direct.date || direct.time)) {
-    return {
-      amount: Number(direct.amount || 0),
-      date: direct.date || "--",
-      time: direct.time || "--"
-    };
-  }
+  const nested = payload?.meters?.[key]?.last_hit;
+  if (!nested) return null;
 
-  const nested = payload.meters?.[key]?.last_hit;
-  if (nested && (nested.amount != null || nested.date || nested.time)) {
-    return {
-      amount: Number(nested.amount || 0),
-      date: nested.date || "--",
-      time: nested.time || "--"
-    };
-  }
-
-  return null;
+  return {
+    amount_raw: Number(nested.amount_raw || 0),
+    amount_display: Number(nested.amount_display || 0),
+    datetime: String(nested.datetime || "--").trim()
+  };
 }
 
 function getResolvedLastHit(payload, key) {
-  return getLiveLastHit(payload, key) || LAST_HIT_META[key] || {
-    amount: 0,
-    date: "--",
-    time: "--"
+  const live = getLiveLastHit(payload, key);
+  if (live && live.datetime && live.datetime !== "--") {
+    const parts = live.datetime.split(" ");
+    return {
+      amount: Number(live.amount_display || 0),
+      date: parts[0] || "--",
+      time: parts[1] || "--",
+      datetime: live.datetime
+    };
+  }
+
+  const fallback = LAST_HIT_META[key] || { amount: 0, date: "--", time: "--" };
+  return {
+    amount: Number(fallback.amount || 0),
+    date: fallback.date || "--",
+    time: fallback.time || "--",
+    datetime: `${fallback.date || "--"} ${fallback.time || "--"}`
   };
+}
+
+/* =========================
+HIT POPUP
+========================= */
+function triggerHitFlash() {
+  const flash = document.createElement("div");
+  flash.className = "hit-flash";
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 450);
+}
+
+function showHitPopup(meta, hit) {
+  if (!hitOverlay || !hitGameName || !hitLevelName || !hitAmount || !hitDateTime) return;
+
+  hitGameName.textContent = meta.name || "Jackpot Hit";
+  hitLevelName.textContent = "JACKPOT WIN";
+  hitAmount.textContent = formatMoney(hit.amount_display || 0);
+  hitDateTime.textContent = hit.datetime || "--";
+
+  hitOverlay.classList.remove("hidden");
+  triggerHitFlash();
+
+  clearTimeout(showHitPopup._hideTimer);
+  showHitPopup._hideTimer = setTimeout(() => {
+    hitOverlay.classList.add("hidden");
+  }, 5000);
+}
+
+function detectNewHits(payload) {
+  if (!payload?.meters) return;
+
+  CARD_META.forEach((meta) => {
+    const hit = getLiveLastHit(payload, meta.key);
+    if (!hit) return;
+    if (!hit.datetime || hit.datetime === "--") return;
+    if (!hit.amount_display || hit.amount_display <= 0) return;
+
+    const prevSeen = seenHitTimestamps.get(meta.key);
+    if (prevSeen !== hit.datetime) {
+      if (prevSeen !== undefined) {
+        showHitPopup(meta, hit);
+      }
+      seenHitTimestamps.set(meta.key, hit.datetime);
+    }
+  });
 }
 
 /* =========================
@@ -237,27 +289,7 @@ function renderLastHits(payload = latestPayload) {
   cardElements.clear();
 
   CARD_META.forEach((meta) => {
-    const liveHit = payload?.meters?.[meta.key]?.last_hit || null;
-
-    let amount = 0;
-    let date = "--";
-    let time = "--";
-
-    if (liveHit && typeof liveHit === "object") {
-      amount = Number(liveHit.amount_display || 0);
-
-      const dt = String(liveHit.datetime || "--").trim();
-      if (dt && dt !== "--") {
-        const parts = dt.split(" ");
-        date = parts[0] || "--";
-        time = parts[1] || "--";
-      }
-    } else {
-      const fallback = LAST_HIT_META[meta.key] || { amount: 0, date: "--", time: "--" };
-      amount = Number(fallback.amount || 0);
-      date = fallback.date || "--";
-      time = fallback.time || "--";
-    }
+    const hit = getResolvedLastHit(payload, meta.key);
 
     const clone = template.content.cloneNode(true);
 
@@ -269,11 +301,11 @@ function renderLastHits(payload = latestPayload) {
     const rawValue = clone.querySelector(".meter-raw-value");
 
     name.textContent = meta.name;
-    val.textContent = formatMoney(amount);
+    val.textContent = formatMoney(hit.amount);
 
     badge.textContent = "HIT";
-    rawLabel.textContent = date;
-    rawValue.textContent = time;
+    rawLabel.textContent = hit.date || "--";
+    rawValue.textContent = hit.time || "--";
 
     card.style.backgroundImage = `url("${meta.bg}")`;
     card.style.backgroundSize = "cover";
@@ -288,7 +320,7 @@ STATUS
 ========================= */
 function setOnline() {
   statusDot.classList.add("online");
-  connectionStatus.textContent = "ONLINE";
+  connectionStatus.textContent = "Supabase";
 }
 
 function setOffline() {
@@ -325,6 +357,10 @@ btnLast?.addEventListener("click", () => {
   renderLastHits(latestPayload);
 });
 
+hitOverlay?.addEventListener("click", () => {
+  hitOverlay.classList.add("hidden");
+});
+
 /* =========================
 MAIN LOOP
 ========================= */
@@ -334,6 +370,7 @@ async function loadData() {
     if (!data) throw new Error("No data");
 
     latestPayload = data;
+    detectNewHits(data);
 
     const hash = JSON.stringify(data);
     const dataChanged = hash !== lastPayloadHash;
