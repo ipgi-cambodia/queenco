@@ -320,7 +320,7 @@ STATUS
 ========================= */
 function setOnline() {
   statusDot.classList.add("online");
-  connectionStatus.textContent = "Supabase";
+  connectionStatus.textContent = "Simulation";
 }
 
 function setOffline() {
