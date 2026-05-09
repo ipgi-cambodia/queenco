@@ -55,7 +55,7 @@ const APP_TRANSLATIONS = {
   },
 
   zh: {
-    "brand.name": "Queenco 会员奖励",
+    "brand.name": "Queenco 会员奖励 ✦Spin",
     "nav.benefits": "会员权益",
     "nav.loyalty": "忠诚奖励",
     "nav.pointsrace": "积分竞赛",
@@ -110,7 +110,7 @@ const APP_TRANSLATIONS = {
   },
 
   km: {
-    "brand.name": "Queenco Loyalty Rewards",
+    "brand.name": "Queenco Loyalty Rewards ✦Spin",
     "nav.benefits": "អត្ថប្រយោជន៍",
     "nav.loyalty": "រង្វាន់សមាជិក",
     "nav.pointsrace": "ការប្រណាំងពិន្ទុ",
@@ -165,7 +165,7 @@ const APP_TRANSLATIONS = {
   },
 
   id: {
-    "brand.name": "Queenco Loyalty Rewards",
+    "brand.name": "Queenco Loyalty Rewards ✦Spin",
     "nav.benefits": "Manfaat",
     "nav.loyalty": "Hadiah Loyalitas",
     "nav.pointsrace": "Lomba Poin",
@@ -220,7 +220,7 @@ const APP_TRANSLATIONS = {
   },
 
   ko: {
-    "brand.name": "Queenco Loyalty Rewards",
+    "brand.name": "Queenco Loyalty Rewards ✦Spin",
     "nav.benefits": "혜택",
     "nav.loyalty": "로열티 리워드",
     "nav.pointsrace": "포인트 레이스",
@@ -275,7 +275,7 @@ const APP_TRANSLATIONS = {
   },
 
   ja: {
-    "brand.name": "Queenco Loyalty Rewards",
+    "brand.name": "Queenco Loyalty Rewards ✦Spin",
     "nav.benefits": "特典",
     "nav.loyalty": "ロイヤルティ特典",
     "nav.pointsrace": "ポイントレース",
