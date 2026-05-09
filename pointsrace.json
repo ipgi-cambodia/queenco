@@ -1,0 +1,77 @@
+{
+  "updatedAt": "2026-05-09 14:00",
+  "headers": [
+    "Rank",
+    "Membership#",
+    "Prizes",
+    "Points",
+    "Points Level For 2X Multiplier",
+    "Points Level For Multiplier",
+    "New Prizes"
+  ],
+  "participants": [
+    {
+      "rank": 1,
+      "membershipNo": "1793",
+      "prizes": "$1,888.00",
+      "points": 176128,
+      "pointsLevelFor2xMultiplier": 100000,
+      "pointsLevelForMultiplier": 76128,
+      "newPrizes": "$3,776.00"
+    },
+    {
+      "rank": 2,
+      "membershipNo": "1495",
+      "prizes": "$1,088.00",
+      "points": 8354,
+      "pointsLevelFor2xMultiplier": 50000,
+      "pointsLevelForMultiplier": -41646,
+      "newPrizes": "$2,176.00"
+    },
+    {
+      "rank": 3,
+      "membershipNo": "2095",
+      "prizes": "$888.00",
+      "points": 8131,
+      "pointsLevelFor2xMultiplier": 25000,
+      "pointsLevelForMultiplier": -16869,
+      "newPrizes": "$1,776.00"
+    },
+    {
+      "rank": 4,
+      "membershipNo": "2402",
+      "prizes": "$588.00",
+      "points": 7256,
+      "pointsLevelFor2xMultiplier": 20000,
+      "pointsLevelForMultiplier": -12744,
+      "newPrizes": "$1,176.00"
+    },
+    {
+      "rank": 5,
+      "membershipNo": "1724",
+      "prizes": "$388.00",
+      "points": 6696,
+      "pointsLevelFor2xMultiplier": 10000,
+      "pointsLevelForMultiplier": -3304,
+      "newPrizes": "$776.00"
+    },
+    {
+      "rank": 6,
+      "membershipNo": "0308",
+      "prizes": "$188.00",
+      "points": 4207,
+      "pointsLevelFor2xMultiplier": 9000,
+      "pointsLevelForMultiplier": -4793,
+      "newPrizes": "$376.00"
+    },
+    {
+      "rank": 7,
+      "membershipNo": "1847",
+      "prizes": "$88.00",
+      "points": 3515,
+      "pointsLevelFor2xMultiplier": 8000,
+      "pointsLevelForMultiplier": -4485,
+      "newPrizes": "$176.00"
+    }
+  ]
+}

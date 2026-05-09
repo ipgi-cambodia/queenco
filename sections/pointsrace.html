@@ -1,0 +1,48 @@
+<div class="pointsrace-section">
+  <div class="section-heading reveal-item">
+    <span class="eyebrow" data-i18n="brand.name">Queenco Loyalty Rewards</span>
+    <h1 data-i18n="points.title">Point's Race</h1>
+    <p data-i18n="points.subtitle">
+      Watch the live leaderboard, chase your multiplier targets, and unlock the next prizes as the race heats up.
+    </p>
+  </div>
+
+  <div class="pointsrace-hero reveal-item">
+    <div class="pointsrace-hero-media">
+      <img src="images/points_race_bg.png" alt="Stylized race track background" class="pointsrace-hero-img">
+      <div class="pointsrace-hero-overlay"></div>
+    </div>
+
+    <div class="pointsrace-hero-content">
+      <span class="pointsrace-kicker" data-i18n="points.weekly">Weekly Competition</span>
+      <h2 data-i18n="points.heroTitle">Accelerate your points. Chase the next prize.</h2>
+      <div class="pointsrace-stat-row pointsrace-stat-row-single">
+        <div class="pointsrace-stat-chip reveal-mini pointsrace-stat-chip-center">
+          <strong id="pointsrace-count">7</strong>
+          <span data-i18n="points.participants">Participants</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pointsrace-board reveal-item">
+    <div class="pointsrace-board-head">
+      <div>
+        <span class="pointsrace-subtitle" data-i18n="points.currentStandings">Current Standings</span>
+        <h3 data-i18n="points.leaderboard">Leaderboard</h3>
+      </div>
+      <div class="pointsrace-updated" id="pointsrace-updated">Updated: --</div>
+    </div>
+
+    <div class="pointsrace-table-wrap">
+      <table class="pointsrace-table" aria-label="Points Race Leaderboard">
+        <thead id="pointsrace-head"></thead>
+        <tbody id="pointsrace-body">
+          <tr>
+            <td colspan="7" class="pointsrace-loading"><span data-i18n="points.loading">Loading standings...</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

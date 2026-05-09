@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queenco Loyalty Rewards</title>
+  <link rel="stylesheet" href="index_style.css" />
+  <link rel="stylesheet" href="jackpot/jackpot_style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-bg">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#benefits" class="brand" aria-label="Queenco Loyalty Rewards Home">
+        <img src="images/logo.webp" alt="Queenco Loyalty Rewards Logo" class="brand-logo">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="#benefits" class="nav-link active" data-i18n="nav.benefits">Benefits</a>
+        <a href="#loyalty" class="nav-link" data-i18n="nav.loyalty">Loyalty Rewards</a>
+        <a href="#pointsrace" class="nav-link" data-i18n="nav.pointsrace">Point's Race</a>
+        <a href="#jackpot" class="nav-link" data-i18n="nav.jackpot">Jackpot Live</a>
+      </nav>
+
+      <div class="language-select-wrap">
+        <select id="languageSelect" class="language-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="zh">CN</option>
+          <option value="km">Khmer</option>
+          <option value="id">Indonesian</option>
+          <option value="ko">Korean</option>
+          <option value="ja">Japanese</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="benefits" class="section-loader"></section>
+
+    <section id="loyalty" class="coming-section">
+      <h2 data-i18n="loyalty.title">Loyalty Rewards</h2>
+      <p data-i18n="common.comingSoon">Coming soon.</p>
+    </section>
+
+    <section id="pointsrace" class="section-loader"></section>
+
+    <section id="jackpot" class="section-loader"></section>
+  </main>
+
+  <footer class="site-footer">
+  <p>© 2026 Queenco Hotel & Casino. All rights reserved.</p>
+  <p>Loyalty Rewards benefits, points, and jackpot information are subject to official terms and conditions.</p>
+</footer>
+
+  <script src="translation.js"></script>
+  <script src="index_script.js"></script>
+  
+
+  
+</body>
+</html>
