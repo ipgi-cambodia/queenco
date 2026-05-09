@@ -1,6 +1,6 @@
 const APP_TRANSLATIONS = {
   en: {
-    "brand.name": "Queenco Loyalty Rewards",
+    "brand.name": "Queenco Loyalty Rewards ✦Spin",
     "nav.benefits": "Benefits",
     "nav.loyalty": "Loyalty Rewards",
     "nav.pointsrace": "Point's Race",
