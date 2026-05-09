@@ -259,12 +259,23 @@ body.nav-open { overflow: hidden; }
   text-transform: uppercase;
 }
 .benefit-info h2 {
-  font-size: 34px;
-  line-height: 1.05;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 46px;
+  line-height: 1;
   margin-bottom: 14px;
-  color: #a86f19; /* brown/golden brown like your sample */
-  letter-spacing: -0.04em;
-  font-weight: 800;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+.card-classic .benefit-info h2 {
+  color: #0e4f73;
+}
+
+.card-silver .benefit-info h2 {
+  color: #2e2e2e;
+}
+
+.card-gold .benefit-info h2 {
+  color: #a99418;
 }
 .tagline {
   color: var(--text-muted);
@@ -413,7 +424,7 @@ body.nav-open { overflow: hidden; }
   .membership-card-img,
   .card-silver .membership-card-img,
   .card-gold .membership-card-img { max-height: 166px; }
-  .benefit-info h2 { font-size: 28px; }
+  .benefit-info h2 { font-size: 38px; }
   .tagline { font-size: 14px; margin-bottom: 18px; }
   .benefit-list li { padding: 15px; border-radius: 17px; }
   .benefit-list strong { font-size: 16px; }
