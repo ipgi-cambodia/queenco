@@ -105,13 +105,31 @@ function clearHeat(card) {
   badge.textContent = "LIVE";
 }
 
+function normalizeAssetPath(path) {
+  const value = String(path || "").trim();
+  if (!value) return "";
+
+  // Keep full external URLs as-is.
+  if (/^(https?:)?\/\//i.test(value) || value.startsWith("data:")) {
+    return value;
+  }
+
+  // GitHub Pages project sites break when Supabase sends /images/file.webp,
+  // because it points to https://username.github.io/images/file.webp.
+  // Convert /images/file.webp or ./images/file.webp into images/file.webp,
+  // so it resolves under the current repo path, e.g. /queenco/images/file.webp.
+  return value.replace(/^\.\//, "").replace(/^\//, "");
+}
+
 function applyBackground(card, meter) {
-  const bg = meter.bg_image || "";
+  const bg = normalizeAssetPath(meter.bg_image || "");
   if (!bg) {
     card.style.backgroundImage = "";
     return;
   }
-  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${bg})`;
+
+  const safeBg = bg.replace(/"/g, '\"');
+  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url("${safeBg}")`;
   card.style.backgroundSize = "110%";
   card.style.backgroundPosition = "center 60%";
 }
