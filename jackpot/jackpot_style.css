@@ -161,7 +161,7 @@
 .meter-card {
   min-height: 230px;
   padding: 22px;
-  background-color: rgba(20, 13, 8, 0.28);
+  background-color: rgba(20, 13, 8, 0.18);
 }
 
 .meter-card::before {
