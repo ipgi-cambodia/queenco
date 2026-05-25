@@ -130,7 +130,7 @@ function applyBackground(card, meter) {
     card.style.backgroundImage = "";
     return;
   }
-  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url("${bg}")`;
+  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.32)), url("${bg}")`;
   card.style.backgroundSize = "110%";
   card.style.backgroundPosition = "center 60%";
 }
