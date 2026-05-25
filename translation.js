@@ -1,6 +1,6 @@
 const APP_TRANSLATIONS = {
   en: {
-    "brand.name": "Queenco Loyalty Rewards ✦Spin",
+    "brand.name": "Queenco Loyalty Rewards",
     "nav.benefits": "Benefits",
     "nav.loyalty": "Loyalty Rewards",
     "nav.pointsrace": "Point's Race",
@@ -11,23 +11,9 @@ const APP_TRANSLATIONS = {
     "benefits.title": "Benefits",
     "benefits.subtitle": "Enjoy exclusive rewards, premium discounts, and relaxing lifestyle privileges made for our valued members.",
     "benefits.tagline": "It's not a magic lamp... but it's close.",
-    "benefits.classic.title": "Classic",
-    "benefits.silver.title": "Silver Club",
-    "benefits.gold.title": "Gold Club",
-    "benefits.classic.discount": "7.5% Discount",
-    "benefits.silver.discountHotel": "15% Discount",
-    "benefits.gold.discountHotel": "20% Discount",
-    "benefits.discountFitness": "50% Discount",
-    "benefits.freeAccess": "Free Access",
-    "benefits.freePool": "Free Pool Pass",
-    "benefits.hotelFood": "Hotel Room Rates, Food and Beverages",
-    "benefits.fitness": "Fitness Centre",
-    "benefits.plus1": "Plus 1 Guest",
-    "benefits.plus3": "Plus 3 Guests",
-    "benefits.popular": "Popular",
 
     "points.title": "Point's Race",
-    "points.subtitle": "Check the updated leaderboard, chase your multiplier targets, and unlock the next prizes as the race heats up.",
+    "points.subtitle": "Watch the live leaderboard, chase your multiplier targets, and unlock the next prizes as the race heats up.",
     "points.weekly": "Weekly Competition",
     "points.heroTitle": "Accelerate your points. Chase the next prize.",
     "points.participants": "Participants",
@@ -55,7 +41,7 @@ const APP_TRANSLATIONS = {
   },
 
   zh: {
-    "brand.name": "Queenco 会员奖励 ✦Spin",
+    "brand.name": "Queenco 会员奖励",
     "nav.benefits": "会员权益",
     "nav.loyalty": "忠诚奖励",
     "nav.pointsrace": "积分竞赛",
@@ -66,20 +52,6 @@ const APP_TRANSLATIONS = {
     "benefits.title": "会员权益",
     "benefits.subtitle": "尊贵会员可享专属奖励、优惠折扣及休闲礼遇。",
     "benefits.tagline": "这不是神灯……但也差不多。",
-    "benefits.classic.title": "经典卡",
-    "benefits.silver.title": "银卡俱乐部",
-    "benefits.gold.title": "金卡俱乐部",
-    "benefits.classic.discount": "7.5% 折扣",
-    "benefits.silver.discountHotel": "15% 折扣",
-    "benefits.gold.discountHotel": "20% 折扣",
-    "benefits.discountFitness": "50% 折扣",
-    "benefits.freeAccess": "免费使用",
-    "benefits.freePool": "免费泳池通行证",
-    "benefits.hotelFood": "酒店房价、餐饮",
-    "benefits.fitness": "健身中心",
-    "benefits.plus1": "可携带 1 位宾客",
-    "benefits.plus3": "可携带 3 位宾客",
-    "benefits.popular": "热门",
 
     "points.title": "积分竞赛",
     "points.subtitle": "查看实时排行榜，冲刺倍数积分目标，赢取下一阶段奖品。",
@@ -110,7 +82,7 @@ const APP_TRANSLATIONS = {
   },
 
   km: {
-    "brand.name": "Queenco Loyalty Rewards ✦Spin",
+    "brand.name": "Queenco Loyalty Rewards",
     "nav.benefits": "អត្ថប្រយោជន៍",
     "nav.loyalty": "រង្វាន់សមាជិក",
     "nav.pointsrace": "ការប្រណាំងពិន្ទុ",
@@ -121,20 +93,6 @@ const APP_TRANSLATIONS = {
     "benefits.title": "អត្ថប្រយោជន៍",
     "benefits.subtitle": "រីករាយជាមួយរង្វាន់ពិសេស បញ្ចុះតម្លៃ និងសិទ្ធិអាទិភាពសម្រាប់សមាជិក។",
     "benefits.tagline": "វាមិនមែនជាចង្កៀងវេទមន្តទេ... ប៉ុន្តែជិតដូចគ្នា។",
-    "benefits.classic.title": "Classic",
-    "benefits.silver.title": "Silver Club",
-    "benefits.gold.title": "Gold Club",
-    "benefits.classic.discount": "បញ្ចុះតម្លៃ 7.5%",
-    "benefits.silver.discountHotel": "បញ្ចុះតម្លៃ 15%",
-    "benefits.gold.discountHotel": "បញ្ចុះតម្លៃ 20%",
-    "benefits.discountFitness": "បញ្ចុះតម្លៃ 50%",
-    "benefits.freeAccess": "ចូលប្រើឥតគិតថ្លៃ",
-    "benefits.freePool": "ប័ណ្ណចូលអាងហែលទឹកឥតគិតថ្លៃ",
-    "benefits.hotelFood": "តម្លៃបន្ទប់សណ្ឋាគារ អាហារ និងភេសជ្ជៈ",
-    "benefits.fitness": "មជ្ឈមណ្ឌលហាត់ប្រាណ",
-    "benefits.plus1": "បូកភ្ញៀវ 1 នាក់",
-    "benefits.plus3": "បូកភ្ញៀវ 3 នាក់",
-    "benefits.popular": "ពេញនិយម",
 
     "points.title": "ការប្រណាំងពិន្ទុ",
     "points.subtitle": "មើលតារាងពិន្ទុផ្ទាល់ ប្រមូលពិន្ទុឲ្យដល់គោលដៅ និងដោះសោរង្វាន់បន្ទាប់។",
@@ -165,7 +123,7 @@ const APP_TRANSLATIONS = {
   },
 
   id: {
-    "brand.name": "Queenco Loyalty Rewards ✦Spin",
+    "brand.name": "Queenco Loyalty Rewards",
     "nav.benefits": "Manfaat",
     "nav.loyalty": "Hadiah Loyalitas",
     "nav.pointsrace": "Lomba Poin",
@@ -176,20 +134,6 @@ const APP_TRANSLATIONS = {
     "benefits.title": "Manfaat",
     "benefits.subtitle": "Nikmati hadiah eksklusif, diskon premium, dan fasilitas gaya hidup untuk member kami.",
     "benefits.tagline": "Ini bukan lampu ajaib... tapi hampir sama.",
-    "benefits.classic.title": "Classic",
-    "benefits.silver.title": "Silver Club",
-    "benefits.gold.title": "Gold Club",
-    "benefits.classic.discount": "Diskon 7.5%",
-    "benefits.silver.discountHotel": "Diskon 15%",
-    "benefits.gold.discountHotel": "Diskon 20%",
-    "benefits.discountFitness": "Diskon 50%",
-    "benefits.freeAccess": "Akses Gratis",
-    "benefits.freePool": "Gratis Pool Pass",
-    "benefits.hotelFood": "Harga Kamar Hotel, Makanan dan Minuman",
-    "benefits.fitness": "Fitness Centre",
-    "benefits.plus1": "Plus 1 Tamu",
-    "benefits.plus3": "Plus 3 Tamu",
-    "benefits.popular": "Populer",
 
     "points.title": "Lomba Poin",
     "points.subtitle": "Lihat leaderboard live, kejar target multiplier, dan buka hadiah berikutnya.",
@@ -220,7 +164,7 @@ const APP_TRANSLATIONS = {
   },
 
   ko: {
-    "brand.name": "Queenco Loyalty Rewards ✦Spin",
+    "brand.name": "Queenco Loyalty Rewards",
     "nav.benefits": "혜택",
     "nav.loyalty": "로열티 리워드",
     "nav.pointsrace": "포인트 레이스",
@@ -231,20 +175,6 @@ const APP_TRANSLATIONS = {
     "benefits.title": "혜택",
     "benefits.subtitle": "소중한 회원을 위한 특별 리워드, 프리미엄 할인, 라이프스타일 혜택을 즐기세요.",
     "benefits.tagline": "마법 램프는 아니지만... 거의 비슷합니다.",
-    "benefits.classic.title": "클래식",
-    "benefits.silver.title": "실버 클럽",
-    "benefits.gold.title": "골드 클럽",
-    "benefits.classic.discount": "7.5% 할인",
-    "benefits.silver.discountHotel": "15% 할인",
-    "benefits.gold.discountHotel": "20% 할인",
-    "benefits.discountFitness": "50% 할인",
-    "benefits.freeAccess": "무료 이용",
-    "benefits.freePool": "무료 수영장 패스",
-    "benefits.hotelFood": "호텔 객실 요금, 식음료",
-    "benefits.fitness": "피트니스 센터",
-    "benefits.plus1": "동반 1인 포함",
-    "benefits.plus3": "동반 3인 포함",
-    "benefits.popular": "인기",
 
     "points.title": "포인트 레이스",
     "points.subtitle": "실시간 리더보드를 확인하고 배수 포인트 목표와 다음 상품에 도전하세요.",
@@ -275,7 +205,7 @@ const APP_TRANSLATIONS = {
   },
 
   ja: {
-    "brand.name": "Queenco Loyalty Rewards ✦Spin",
+    "brand.name": "Queenco Loyalty Rewards",
     "nav.benefits": "特典",
     "nav.loyalty": "ロイヤルティ特典",
     "nav.pointsrace": "ポイントレース",
@@ -286,20 +216,6 @@ const APP_TRANSLATIONS = {
     "benefits.title": "特典",
     "benefits.subtitle": "大切な会員の皆様へ、限定リワード、プレミアム割引、ライフスタイル特典をお届けします。",
     "benefits.tagline": "魔法のランプではありません...でも、かなり近いです。",
-    "benefits.classic.title": "クラシック",
-    "benefits.silver.title": "シルバークラブ",
-    "benefits.gold.title": "ゴールドクラブ",
-    "benefits.classic.discount": "7.5% 割引",
-    "benefits.silver.discountHotel": "15% 割引",
-    "benefits.gold.discountHotel": "20% 割引",
-    "benefits.discountFitness": "50% 割引",
-    "benefits.freeAccess": "無料アクセス",
-    "benefits.freePool": "無料プールパス",
-    "benefits.hotelFood": "ホテル宿泊料金、飲食",
-    "benefits.fitness": "フィットネスセンター",
-    "benefits.plus1": "同伴者 1 名まで",
-    "benefits.plus3": "同伴者 3 名まで",
-    "benefits.popular": "人気",
 
     "points.title": "ポイントレース",
     "points.subtitle": "ライブ順位表を確認し、倍率ポイント目標と次の賞品を目指しましょう。",
@@ -336,6 +252,15 @@ function t(key) {
   return APP_TRANSLATIONS[currentLanguage]?.[key] || APP_TRANSLATIONS.en[key] || key;
 }
 
+const BENEFIT_IMAGE_PREFIX = {
+  en: "EN",
+  zh: "CN",
+  km: "KH",
+  id: "ID",
+  ko: "KR",
+  ja: "JP"
+};
+
 function applyTranslations() {
   document.documentElement.lang = currentLanguage;
 
@@ -349,8 +274,21 @@ function applyTranslations() {
     element.innerHTML = t(key);
   });
 
+  updateBenefitImages();
+
   const selector = document.getElementById("languageSelect");
   if (selector) selector.value = currentLanguage;
+}
+
+function updateBenefitImages() {
+  const prefix = BENEFIT_IMAGE_PREFIX[currentLanguage] || BENEFIT_IMAGE_PREFIX.en;
+
+  document.querySelectorAll("[data-benefit-tier]").forEach(image => {
+    const tier = image.dataset.benefitTier;
+    if (!tier) return;
+
+    image.src = `images/benefits/${prefix}-${tier}.webp`;
+  });
 }
 
 function setLanguage(language) {
