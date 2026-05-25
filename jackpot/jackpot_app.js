@@ -105,13 +105,32 @@ function clearHeat(card) {
   badge.textContent = "LIVE";
 }
 
+function normalizeImagePath(path) {
+  if (!path) return "";
+
+  let fixedPath = String(path).trim().replace(/\\/g, "/");
+
+  // GitHub Pages project sites must use relative paths, not /images/...
+  fixedPath = fixedPath.replace(/^\/+/, "");
+
+  // Accept both old/wrong singular folder and correct plural folder.
+  fixedPath = fixedPath.replace(/^(\.\/)?image\//i, "images/");
+
+  // If only the filename is supplied from JSON/Supabase, point it to images/.
+  if (!fixedPath.includes("/") && /\.(webp|png|jpg|jpeg|gif|avif)$/i.test(fixedPath)) {
+    fixedPath = `images/${fixedPath}`;
+  }
+
+  return fixedPath;
+}
+
 function applyBackground(card, meter) {
-  const bg = meter.bg_image || "";
+  const bg = normalizeImagePath(meter.bg_image || "");
   if (!bg) {
     card.style.backgroundImage = "";
     return;
   }
-  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${bg})`;
+  card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url("${bg}")`;
   card.style.backgroundSize = "110%";
   card.style.backgroundPosition = "center 60%";
 }
