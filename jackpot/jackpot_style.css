@@ -159,13 +159,31 @@
 }
 
 .meter-card {
-  filter: none !important;
-  background-blend-mode: normal !important;
+  min-height: 230px;
+  padding: 22px;
+  background-color: rgba(20, 13, 8, 0.18);
 }
 
-.meter-card::before,
+.meter-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.48)),
+    radial-gradient(circle at top right, rgba(255, 202, 82, 0.14), transparent 32%);
+
 .meter-card::after {
-  display: none !important;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,220,120,0.10) 45%, rgba(255,255,255,0.28) 50%, rgba(255,220,120,0.10) 55%, rgba(255,255,255,0) 100%);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  opacity: 0;
 }
 
 .meter-card > * {
