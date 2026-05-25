@@ -166,8 +166,8 @@
 
 .meter-card::before {
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.14)),
-    radial-gradient(circle at top right, rgba(255, 202, 82, 0.05), transparent 32%);
+    linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.48)),
+    radial-gradient(circle at top right, rgba(255, 202, 82, 0.15), transparent 32%);
 }
 
 .meter-card::after {
