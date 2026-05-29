@@ -258,13 +258,13 @@ async function fetchFallbackPayload() {
 }
 
 function markOnline(text = "Connected") {
-  statusDot.classList.add("online");
-  connectionStatus.textContent = text;
+  if (statusDot) statusDot.classList.add("online");
+  if (connectionStatus) connectionStatus.textContent = text;
 }
 
 function markOffline(text = "Waiting for data...") {
-  statusDot.classList.remove("online");
-  connectionStatus.textContent = text;
+  if (statusDot) statusDot.classList.remove("online");
+  if (connectionStatus) connectionStatus.textContent = text;
 }
 
 async function loadData() {
@@ -282,7 +282,7 @@ async function loadData() {
 
     const signature = JSON.stringify(data?.meters || {});
     markOnline(source);
-    lastUpdated.textContent = data.updated_at || "--";
+    if (lastUpdated) lastUpdated.textContent = data.updated_at || "--";
 
     if (signature !== lastPayloadSignature) {
       detectNewHits(data);

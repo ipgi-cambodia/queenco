@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await Promise.all([
     loadSection("benefits", "sections/benefits.html"),
+    loadSection("loyalty", "sections/rewards.html"),
     loadSection("pointsrace", "sections/pointsrace.html"),
     loadSection("jackpot", "sections/jackpot.html")
   ]);
