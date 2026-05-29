@@ -1,0 +1,93 @@
+{
+  "updated_at": "Local preview",
+  "meters": {
+    "box1": {
+      "name": "Prosperity",
+      "level_name": "Grand",
+      "display_value": 8888.88,
+      "must_win_max": "10000.00",
+      "bg_image": "images/prosperity.webp",
+      "last_hit": {
+        "amount_display": 7000.0,
+        "datetime": "Preview"
+      }
+    },
+    "box2": {
+      "name": "Kung Fu",
+      "level_name": "Major",
+      "display_value": 3688.25,
+      "must_win_max": "5000.00",
+      "bg_image": "images/kungfu.webp",
+      "last_hit": {
+        "amount_display": 3500.0,
+        "datetime": "Preview"
+      }
+    },
+    "box3": {
+      "name": "Dragon Tiger",
+      "level_name": "Minor",
+      "display_value": 1288.5,
+      "must_win_max": "2000.00",
+      "bg_image": "images/dt.webp",
+      "last_hit": {
+        "amount_display": 1200.0,
+        "datetime": "Preview"
+      }
+    },
+    "box4": {
+      "name": "Fortune Dice",
+      "level_name": "Mini",
+      "display_value": 388.75,
+      "must_win_max": "500.00",
+      "bg_image": "images/fd.webp",
+      "last_hit": {
+        "amount_display": 300.0,
+        "datetime": "Preview"
+      }
+    },
+    "box5": {
+      "name": "Prosperity",
+      "level_name": "Link 2",
+      "display_value": 5888.18,
+      "must_win_max": "8000.00",
+      "bg_image": "images/prosperity.webp",
+      "last_hit": {
+        "amount_display": 5000.0,
+        "datetime": "Preview"
+      }
+    },
+    "box6": {
+      "name": "Kung Fu",
+      "level_name": "Link 2",
+      "display_value": 2688.8,
+      "must_win_max": "4000.00",
+      "bg_image": "images/kungfu.webp",
+      "last_hit": {
+        "amount_display": 2500.0,
+        "datetime": "Preview"
+      }
+    },
+    "box7": {
+      "name": "Dragon Tiger",
+      "level_name": "Link 2",
+      "display_value": 998.6,
+      "must_win_max": "1500.00",
+      "bg_image": "images/dt.webp",
+      "last_hit": {
+        "amount_display": 900.0,
+        "datetime": "Preview"
+      }
+    },
+    "box8": {
+      "name": "Fortune Dice",
+      "level_name": "Link 2",
+      "display_value": 268.4,
+      "must_win_max": "400.00",
+      "bg_image": "images/fd.webp",
+      "last_hit": {
+        "amount_display": 250.0,
+        "datetime": "Preview"
+      }
+    }
+  }
+}

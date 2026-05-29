@@ -47,6 +47,22 @@ let pollTimer = null;
 let lastPayloadSignature = "";
 let isLoading = false;
 
+function buildPlaceholderPayload() {
+  return {
+    updated_at: "Local preview",
+    meters: {
+      box1: { name: "Prosperity", level_name: "Grand", display_value: 8888.88, must_win_max: "10000.00", bg_image: "images/prosperity.webp", last_hit: { amount_display: 7000.00, datetime: "Preview" } },
+      box2: { name: "Kung Fu", level_name: "Major", display_value: 3688.25, must_win_max: "5000.00", bg_image: "images/kungfu.webp", last_hit: { amount_display: 3500.00, datetime: "Preview" } },
+      box3: { name: "Dragon Tiger", level_name: "Minor", display_value: 1288.50, must_win_max: "2000.00", bg_image: "images/dt.webp", last_hit: { amount_display: 1200.00, datetime: "Preview" } },
+      box4: { name: "Fortune Dice", level_name: "Mini", display_value: 388.75, must_win_max: "500.00", bg_image: "images/fd.webp", last_hit: { amount_display: 300.00, datetime: "Preview" } },
+      box5: { name: "Prosperity", level_name: "Link 2", display_value: 5888.18, must_win_max: "8000.00", bg_image: "images/prosperity.webp", last_hit: { amount_display: 5000.00, datetime: "Preview" } },
+      box6: { name: "Kung Fu", level_name: "Link 2", display_value: 2688.80, must_win_max: "4000.00", bg_image: "images/kungfu.webp", last_hit: { amount_display: 2500.00, datetime: "Preview" } },
+      box7: { name: "Dragon Tiger", level_name: "Link 2", display_value: 998.60, must_win_max: "1500.00", bg_image: "images/dt.webp", last_hit: { amount_display: 900.00, datetime: "Preview" } },
+      box8: { name: "Fortune Dice", level_name: "Link 2", display_value: 268.40, must_win_max: "400.00", bg_image: "images/fd.webp", last_hit: { amount_display: 250.00, datetime: "Preview" } }
+    }
+  };
+}
+
 function formatMoney(value) {
   return Number(value || 0).toLocaleString(undefined, {
     minimumFractionDigits: 2,
@@ -295,7 +311,16 @@ async function loadData() {
     }
   } catch (err) {
     console.error(err);
-    markOffline("Waiting for data...");
+    markOffline("Local preview");
+
+    // Keep the page layout visible during localhost testing even when
+    // Supabase or jackpot.json is not reachable.
+    const previewData = buildPlaceholderPayload();
+    if (currentView === "current") {
+      renderMeters(previewData);
+    } else {
+      renderLastHits(previewData);
+    }
   } finally {
     isLoading = false;
   }

@@ -127,9 +127,16 @@
 }
 
 .meter-card {
+  position: relative;
+  overflow: hidden;
   min-height: 230px;
   padding: 22px;
-  background-color: rgba(20, 13, 8, 0.18);
+  border-radius: 28px;
+  background-color: rgba(20, 13, 8, 0.34);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(201, 151, 51, 0.24);
+  box-shadow: 0 22px 54px rgba(65, 43, 17, 0.18);
 }
 
 .meter-card::before {
@@ -363,4 +370,14 @@
   .jackpot-summary-list { margin-top: 22px; gap: 10px; }
   .jackpot-summary-list li { padding: 14px 15px 14px 42px; border-radius: 17px; }
   .meter-card { border-radius: 20px; padding: 18px; }
+}
+
+
+.jackpot-status-card {
+  grid-column: 1 / -1;
+  padding: 20px 22px;
+  border-radius: 20px;
+  color: #756b5e;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(201, 151, 51, 0.18);
 }

@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   applyTranslations();
 
   await Promise.all([
-    loadSection("benefits", "sections/benefits.html"),
-    loadSection("loyalty", "sections/rewards.html"),
+    loadSection("jackpot", "sections/jackpot.html"),
     loadSection("pointsrace", "sections/pointsrace.html"),
-    loadSection("jackpot", "sections/jackpot.html")
+    loadSection("loyalty", "sections/rewards.html"),
+    loadSection("benefits", "sections/benefits.html")
   ]);
 
   await renderPointsRace();
@@ -47,7 +47,6 @@ async function loadJackpotLiveAssets() {
 
   try {
     await loadScriptOnce("jackpot-config-script", "jackpot/jackpot_config.js");
-    await loadScriptOnce("supabase-client-script", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2");
     await loadScriptOnce("jackpot-app-script", "jackpot/jackpot_app.js");
   } catch (error) {
     console.error("Unable to load Jackpot Live scripts", error);
