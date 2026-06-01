@@ -1,10 +1,10 @@
 const APP_TRANSLATIONS = {
   en: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Benefits",
-    "nav.loyalty": "Loyalty Rewards",
-    "nav.pointsrace": "Point's Race",
-    "nav.jackpot": "Jackpot Live",
+    "nav.benefits": "Loyalty - Benefits",
+    "nav.loyalty": "Loyalty - Rewards",
+    "nav.pointsrace": "Loyalty - Point's Race",
+    "nav.jackpot": "Loyalty - Jackpot Watch",
     "common.comingSoon": "Coming soon.",
     "loyalty.title": "Loyalty Rewards",
     "loyalty.introTitle": "Welcome to the World of Queenco Entertainment Resort",
@@ -61,10 +61,10 @@ const APP_TRANSLATIONS = {
 
   zh: {
     "brand.name": "Queenco 会员奖励",
-    "nav.benefits": "会员权益",
-    "nav.loyalty": "忠诚奖励",
-    "nav.pointsrace": "积分竞赛",
-    "nav.jackpot": "现场累积奖",
+    "nav.benefits": "Loyalty - Benefits",
+    "nav.loyalty": "Loyalty - Rewards",
+    "nav.pointsrace": "Loyalty - Point's Race",
+    "nav.jackpot": "Loyalty - Jackpot Watch",
     "common.comingSoon": "即将推出。",
     "loyalty.title": "忠诚奖励",
     "loyalty.introTitle": "欢迎来到 Queenco Entertainment Resort 的世界",
@@ -121,10 +121,10 @@ const APP_TRANSLATIONS = {
 
   km: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "អត្ថប្រយោជន៍",
-    "nav.loyalty": "រង្វាន់សមាជិក",
-    "nav.pointsrace": "ការប្រណាំងពិន្ទុ",
-    "nav.jackpot": "Jackpot ផ្ទាល់",
+    "nav.benefits": "Loyalty - Benefits",
+    "nav.loyalty": "Loyalty - Rewards",
+    "nav.pointsrace": "Loyalty - Point's Race",
+    "nav.jackpot": "Loyalty - Jackpot Watch",
     "common.comingSoon": "មកដល់ឆាប់ៗនេះ។",
     "loyalty.title": "រង្វាន់សមាជិក",
     "loyalty.introTitle": "សូមស្វាគមន៍មកកាន់ពិភព Queenco Entertainment Resort",
@@ -181,10 +181,10 @@ const APP_TRANSLATIONS = {
 
   id: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Manfaat",
-    "nav.loyalty": "Hadiah Loyalitas",
-    "nav.pointsrace": "Lomba Poin",
-    "nav.jackpot": "Jackpot Live",
+    "nav.benefits": "Loyalty - Benefits",
+    "nav.loyalty": "Loyalty - Rewards",
+    "nav.pointsrace": "Loyalty - Point's Race",
+    "nav.jackpot": "Loyalty - Jackpot Watch",
     "common.comingSoon": "Segera hadir.",
     "loyalty.title": "Hadiah Loyalitas",
     "loyalty.introTitle": "Selamat datang di dunia Queenco Entertainment Resort",
@@ -241,10 +241,10 @@ const APP_TRANSLATIONS = {
 
   ko: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "혜택",
-    "nav.loyalty": "로열티 리워드",
-    "nav.pointsrace": "포인트 레이스",
-    "nav.jackpot": "잭팟 라이브",
+    "nav.benefits": "Loyalty - Benefits",
+    "nav.loyalty": "Loyalty - Rewards",
+    "nav.pointsrace": "Loyalty - Point's Race",
+    "nav.jackpot": "Loyalty - Jackpot Watch",
     "common.comingSoon": "곧 공개됩니다.",
     "loyalty.title": "로열티 리워드",
     "loyalty.introTitle": "Queenco Entertainment Resort의 세계에 오신 것을 환영합니다",
@@ -301,10 +301,10 @@ const APP_TRANSLATIONS = {
 
   ja: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "特典",
-    "nav.loyalty": "ロイヤルティ特典",
-    "nav.pointsrace": "ポイントレース",
-    "nav.jackpot": "ジャックポットライブ",
+    "nav.benefits": "Loyalty - Benefits",
+    "nav.loyalty": "Loyalty - Rewards",
+    "nav.pointsrace": "Loyalty - Point's Race",
+    "nav.jackpot": "Loyalty - Jackpot Watch",
     "common.comingSoon": "近日公開。",
     "loyalty.title": "ロイヤルティ特典",
     "loyalty.introTitle": "Queenco Entertainment Resortの世界へようこそ",
