@@ -36,8 +36,25 @@
         <a href="#benefits" class="nav-link" data-i18n="nav.benefits">Benefits</a>
       </nav>
 
-      <div class="language-select-wrap">
-        <select id="languageSelect" class="language-select" aria-label="Select language">
+      <div class="language-select-wrap language-dropdown" id="languageDropdown">
+        <button id="languageButton" class="language-button" type="button" aria-label="Select language" aria-haspopup="listbox" aria-expanded="false">
+          <span class="language-button-content">
+            <img src="images/language/en.webp" alt="" class="language-flag" id="languageButtonFlag">
+            <span id="languageButtonLabel">EN</span>
+          </span>
+          <span class="language-chevron" aria-hidden="true">⌄</span>
+        </button>
+
+        <ul class="language-menu" id="languageMenu" role="listbox" aria-label="Select language">
+          <li><button type="button" class="language-option" role="option" data-lang="en"><img src="images/language/en.webp" alt="" class="language-flag">English</button></li>
+          <li><button type="button" class="language-option" role="option" data-lang="zh"><img src="images/language/cn.webp" alt="" class="language-flag">Chinese</button></li>
+          <li><button type="button" class="language-option" role="option" data-lang="km"><img src="images/language/khmer.webp" alt="" class="language-flag">Khmer</button></li>
+          <li><button type="button" class="language-option" role="option" data-lang="id"><img src="images/language/id.webp" alt="" class="language-flag">Indonesian</button></li>
+          <li><button type="button" class="language-option" role="option" data-lang="ko"><img src="images/language/kr.webp" alt="" class="language-flag">Korean</button></li>
+          <li><button type="button" class="language-option" role="option" data-lang="ja"><img src="images/language/jp.webp" alt="" class="language-flag">Japanese</button></li>
+        </ul>
+
+        <select id="languageSelect" class="language-select native-language-select" aria-label="Select language" tabindex="-1">
           <option value="en">EN</option>
           <option value="zh">CN</option>
           <option value="km">Khmer</option>
