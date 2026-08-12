@@ -27,14 +27,15 @@ const hitAmount = document.getElementById("hitAmount");
 const hitDateTime = document.getElementById("hitDateTime");
 
 const meterOrder = [
-  { key: "box1", label: "Jackpot 1" },
-  { key: "box2", label: "Jackpot 2" },
-  { key: "box3", label: "Jackpot 3" },
-  { key: "box4", label: "Jackpot 4" },
-  { key: "box5", label: "Jackpot 5" },
-  { key: "box6", label: "Jackpot 6" },
-  { key: "box7", label: "Jackpot 7" },
-  { key: "box8", label: "Jackpot 8" }
+  { key: "box1", label: "KungFu Saga - Level 1" },
+  { key: "box2", label: "KungFu Saga - Level 2" },
+  { key: "box3", label: "KungFu Saga - Level 3" },
+  { key: "box4", label: "Fighting Dragon - Level 1" },
+  { key: "box5", label: "Fighting Dragon - Level 2" },
+  { key: "box6", label: "Prosperity - Level 1" },
+  { key: "box7", label: "Prosperity - Level 2" },
+  { key: "box8", label: "Dragon's Treasure - Level 1" },
+  { key: "box9", label: "Dragon's Treasure - Level 2" }
 ];
 
 let renderedCards = {};
@@ -51,14 +52,15 @@ function buildPlaceholderPayload() {
   return {
     updated_at: "Local preview",
     meters: {
-      box1: { name: "Prosperity", level_name: "Grand", display_value: 8888.88, must_win_max: "10000.00", bg_image: "images/prosperity.webp", last_hit: { amount_display: 7000.00, datetime: "Preview" } },
-      box2: { name: "Kung Fu", level_name: "Major", display_value: 3688.25, must_win_max: "5000.00", bg_image: "images/kungfu.webp", last_hit: { amount_display: 3500.00, datetime: "Preview" } },
-      box3: { name: "Dragon Tiger", level_name: "Minor", display_value: 1288.50, must_win_max: "2000.00", bg_image: "images/dt.webp", last_hit: { amount_display: 1200.00, datetime: "Preview" } },
-      box4: { name: "Fortune Dice", level_name: "Mini", display_value: 388.75, must_win_max: "500.00", bg_image: "images/fd.webp", last_hit: { amount_display: 300.00, datetime: "Preview" } },
-      box5: { name: "Prosperity", level_name: "Link 2", display_value: 5888.18, must_win_max: "8000.00", bg_image: "images/prosperity.webp", last_hit: { amount_display: 5000.00, datetime: "Preview" } },
-      box6: { name: "Kung Fu", level_name: "Link 2", display_value: 2688.80, must_win_max: "4000.00", bg_image: "images/kungfu.webp", last_hit: { amount_display: 2500.00, datetime: "Preview" } },
-      box7: { name: "Dragon Tiger", level_name: "Link 2", display_value: 998.60, must_win_max: "1500.00", bg_image: "images/dt.webp", last_hit: { amount_display: 900.00, datetime: "Preview" } },
-      box8: { name: "Fortune Dice", level_name: "Link 2", display_value: 268.40, must_win_max: "400.00", bg_image: "images/fd.webp", last_hit: { amount_display: 250.00, datetime: "Preview" } }
+      box1: { name: "KungFu Saga - Level 1", level_name: "", display_value: 1023.43, must_win_max: "3,000", bg_image: "images/kungfu.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box2: { name: "KungFu Saga - Level 2", level_name: "", display_value: 1971.51, must_win_max: "3,000", bg_image: "images/kungfu.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box3: { name: "KungFu Saga - Level 3", level_name: "", display_value: 1288.50, must_win_max: "3,000", bg_image: "images/kungfu.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box4: { name: "Fighting Dragon - Level 1", level_name: "", display_value: 8674.03, must_win_max: "10,000", bg_image: "images/fd.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box5: { name: "Fighting Dragon - Level 2", level_name: "", display_value: 1067.24, must_win_max: "1,500", bg_image: "images/fd.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box6: { name: "Prosperity - Level 1", level_name: "", display_value: 6760.13, must_win_max: "10,000", bg_image: "images/prosperity.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box7: { name: "Prosperity - Level 2", level_name: "", display_value: 1420.04, must_win_max: "10,000", bg_image: "images/prosperity.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box8: { name: "Dragon's Treasure - Level 1", level_name: "", display_value: 11765.76, must_win_max: "20,000", bg_image: "images/dt.webp", last_hit: { amount_display: 0, datetime: "Preview" } },
+      box9: { name: "Dragon's Treasure - Level 2", level_name: "", display_value: 15638.17, must_win_max: "20,000", bg_image: "images/dt.webp", last_hit: { amount_display: 0, datetime: "Preview" } }
     }
   };
 }

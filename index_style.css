@@ -69,7 +69,7 @@ body.nav-open { overflow: hidden; }
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   padding: 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.58);
@@ -79,11 +79,11 @@ body.nav-open { overflow: hidden; }
 .nav-link {
   color: var(--brown);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  white-space: nowrap;
-  line-height: 1.25;
-  padding: 11px 14px;
+  white-space: normal;
+  line-height: 1.3;
+  padding: 11px 18px;
   border-radius: 999px;
   transition: all 0.25s ease;
 }
@@ -498,7 +498,7 @@ body.nav-open { overflow: hidden; }
 @media (max-width: 1180px) {
   .site-header { padding: 16px 26px; }
   .brand-logo { height: 48px; }
-  .nav-link { padding: 10px 10px; font-size: 12px; }
+  .nav-link { padding: 10px 13px; font-size: 13px; }
   .benefits-section,
   .loyalty-section { width: min(100% - 52px, 980px); padding-top: 64px; }
   .membership-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -510,8 +510,8 @@ body.nav-open { overflow: hidden; }
 
 @media (max-width: 900px) {
   .header-inner { align-items: center; }
-  .main-nav { gap: 4px; padding: 6px; }
-  .nav-link { padding: 9px 8px; font-size: 11px; }
+  .main-nav { gap: 5px; padding: 6px; }
+  .nav-link { padding: 9px 10px; font-size: 12px; }
   .section-heading { margin-bottom: 40px; }
   .loyalty-intro { margin-bottom: 42px; }
   .membership-card { min-height: auto; }
@@ -1165,111 +1165,32 @@ body.nav-open { overflow: hidden; }
 .language-select-wrap {
   flex: 0 0 auto;
   position: relative;
-  z-index: 80;
 }
 
-.native-language-select {
-  display: none;
-}
-
-.language-button {
-  min-width: 150px;
+.language-select {
+  min-width: 118px;
   height: 46px;
-  padding: 0 14px 0 14px;
+  padding: 0 38px 0 16px;
   border-radius: 999px;
   border: 1px solid rgba(201, 151, 51, 0.45);
   background: #fffaf1;
   color: var(--brown);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
   outline: none;
   cursor: pointer;
   box-shadow: 0 10px 28px rgba(68, 46, 19, 0.08);
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.language-button:hover,
-.language-dropdown.is-open .language-button,
-.language-button:focus-visible {
+.language-select:focus {
   border-color: rgba(201, 151, 51, 0.7);
   box-shadow: 0 0 0 4px rgba(201, 151, 51, 0.14), 0 10px 28px rgba(68, 46, 19, 0.08);
 }
 
-.language-button:hover {
-  transform: translateY(-1px);
-}
-
-.language-button-content,
-.language-option {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.language-flag {
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 0 1px rgba(79, 54, 25, 0.12), 0 4px 10px rgba(68, 46, 19, 0.12);
-  flex: 0 0 auto;
-}
-
-.language-chevron {
-  color: rgba(67, 44, 21, 0.72);
-  font-size: 17px;
-  line-height: 1;
-  transform: translateY(-1px);
-}
-
-.language-menu {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 8px);
-  min-width: 190px;
-  margin: 0;
-  padding: 8px;
-  list-style: none;
-  border-radius: 14px;
-  border: 1px solid rgba(201, 151, 51, 0.32);
-  background: rgba(255, 250, 241, 0.98);
-  box-shadow: 0 18px 42px rgba(68, 46, 19, 0.18);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-}
-
-.language-dropdown.is-open .language-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.language-option {
-  width: 100%;
-  padding: 9px 10px;
-  border: 0;
-  border-radius: 10px;
-  background: transparent;
+.language-select option {
   color: #2b2118;
-  font-size: 13px;
-  font-weight: 800;
-  text-align: left;
-  cursor: pointer;
-}
-
-.language-option:hover,
-.language-option.is-active,
-.language-option:focus-visible {
-  background: rgba(201, 151, 51, 0.14);
-  outline: none;
+  background: #fffaf1;
+  font-weight: 700;
 }
 
 @media (max-width: 980px) {
@@ -1283,20 +1204,11 @@ body.nav-open { overflow: hidden; }
 }
 
 @media (max-width: 760px) {
-  .language-button {
-    min-width: 126px;
+  .language-select {
+    min-width: 106px;
     height: 42px;
     font-size: 12px;
-    padding: 0 12px;
-  }
-
-  .language-menu {
-    min-width: 176px;
-  }
-
-  .language-flag {
-    width: 21px;
-    height: 21px;
+    padding-left: 13px;
   }
 }
 

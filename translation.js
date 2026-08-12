@@ -1,10 +1,10 @@
 const APP_TRANSLATIONS = {
   en: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Loyalty - Benefits",
-    "nav.loyalty": "Loyalty - Rewards",
-    "nav.pointsrace": "Loyalty - Point's Race",
-    "nav.jackpot": "Loyalty - Jackpot Watch",
+    "nav.benefits": "Benefits",
+    "nav.loyalty": "Loyalty Rewards",
+    "nav.pointsrace": "Point's Race",
+    "nav.jackpot": "Jackpot Live",
     "common.comingSoon": "Coming soon.",
     "loyalty.title": "Loyalty Rewards",
     "loyalty.introTitle": "Welcome to the World of Queenco Entertainment Resort",
@@ -61,10 +61,10 @@ const APP_TRANSLATIONS = {
 
   zh: {
     "brand.name": "Queenco 会员奖励",
-    "nav.benefits": "Loyalty - Benefits",
-    "nav.loyalty": "Loyalty - Rewards",
-    "nav.pointsrace": "Loyalty - Point's Race",
-    "nav.jackpot": "Loyalty - Jackpot Watch",
+    "nav.benefits": "会员权益",
+    "nav.loyalty": "忠诚奖励",
+    "nav.pointsrace": "积分竞赛",
+    "nav.jackpot": "现场累积奖",
     "common.comingSoon": "即将推出。",
     "loyalty.title": "忠诚奖励",
     "loyalty.introTitle": "欢迎来到 Queenco Entertainment Resort 的世界",
@@ -121,10 +121,10 @@ const APP_TRANSLATIONS = {
 
   km: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Loyalty - Benefits",
-    "nav.loyalty": "Loyalty - Rewards",
-    "nav.pointsrace": "Loyalty - Point's Race",
-    "nav.jackpot": "Loyalty - Jackpot Watch",
+    "nav.benefits": "អត្ថប្រយោជន៍",
+    "nav.loyalty": "រង្វាន់សមាជិក",
+    "nav.pointsrace": "ការប្រណាំងពិន្ទុ",
+    "nav.jackpot": "Jackpot ផ្ទាល់",
     "common.comingSoon": "មកដល់ឆាប់ៗនេះ។",
     "loyalty.title": "រង្វាន់សមាជិក",
     "loyalty.introTitle": "សូមស្វាគមន៍មកកាន់ពិភព Queenco Entertainment Resort",
@@ -181,10 +181,10 @@ const APP_TRANSLATIONS = {
 
   id: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Loyalty - Benefits",
-    "nav.loyalty": "Loyalty - Rewards",
-    "nav.pointsrace": "Loyalty - Point's Race",
-    "nav.jackpot": "Loyalty - Jackpot Watch",
+    "nav.benefits": "Manfaat",
+    "nav.loyalty": "Hadiah Loyalitas",
+    "nav.pointsrace": "Lomba Poin",
+    "nav.jackpot": "Jackpot Live",
     "common.comingSoon": "Segera hadir.",
     "loyalty.title": "Hadiah Loyalitas",
     "loyalty.introTitle": "Selamat datang di dunia Queenco Entertainment Resort",
@@ -241,10 +241,10 @@ const APP_TRANSLATIONS = {
 
   ko: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Loyalty - Benefits",
-    "nav.loyalty": "Loyalty - Rewards",
-    "nav.pointsrace": "Loyalty - Point's Race",
-    "nav.jackpot": "Loyalty - Jackpot Watch",
+    "nav.benefits": "혜택",
+    "nav.loyalty": "로열티 리워드",
+    "nav.pointsrace": "포인트 레이스",
+    "nav.jackpot": "잭팟 라이브",
     "common.comingSoon": "곧 공개됩니다.",
     "loyalty.title": "로열티 리워드",
     "loyalty.introTitle": "Queenco Entertainment Resort의 세계에 오신 것을 환영합니다",
@@ -301,10 +301,10 @@ const APP_TRANSLATIONS = {
 
   ja: {
     "brand.name": "Queenco Loyalty Rewards",
-    "nav.benefits": "Loyalty - Benefits",
-    "nav.loyalty": "Loyalty - Rewards",
-    "nav.pointsrace": "Loyalty - Point's Race",
-    "nav.jackpot": "Loyalty - Jackpot Watch",
+    "nav.benefits": "特典",
+    "nav.loyalty": "ロイヤルティ特典",
+    "nav.pointsrace": "ポイントレース",
+    "nav.jackpot": "ジャックポットライブ",
     "common.comingSoon": "近日公開。",
     "loyalty.title": "ロイヤルティ特典",
     "loyalty.introTitle": "Queenco Entertainment Resortの世界へようこそ",
@@ -375,15 +375,6 @@ const BENEFIT_IMAGE_PREFIX = {
   ja: "JP"
 };
 
-const LANGUAGE_OPTIONS = {
-  en: { label: "EN", menuLabel: "English", flag: "images/language/en.webp" },
-  zh: { label: "CN", menuLabel: "Chinese", flag: "images/language/cn.webp" },
-  km: { label: "Khmer", menuLabel: "Khmer", flag: "images/language/khmer.webp" },
-  id: { label: "Indonesian", menuLabel: "Indonesian", flag: "images/language/id.webp" },
-  ko: { label: "Korean", menuLabel: "Korean", flag: "images/language/kr.webp" },
-  ja: { label: "Japanese", menuLabel: "Japanese", flag: "images/language/jp.webp" }
-};
-
 function applyTranslations() {
   document.documentElement.lang = currentLanguage;
 
@@ -401,8 +392,6 @@ function applyTranslations() {
 
   const selector = document.getElementById("languageSelect");
   if (selector) selector.value = currentLanguage;
-
-  updateLanguageDropdown();
 }
 
 function updateBenefitImages() {
@@ -426,67 +415,10 @@ function setLanguage(language) {
   }
 }
 
-function updateLanguageDropdown() {
-  const current = LANGUAGE_OPTIONS[currentLanguage] || LANGUAGE_OPTIONS.en;
-  const button = document.getElementById("languageButton");
-  const label = document.getElementById("languageButtonLabel");
-  const flag = document.getElementById("languageButtonFlag");
-
-  if (label) label.textContent = current.label;
-  if (flag) flag.src = current.flag;
-
-  document.querySelectorAll(".language-option").forEach(option => {
-    const isActive = option.dataset.lang === currentLanguage;
-    option.classList.toggle("is-active", isActive);
-    option.setAttribute("aria-selected", isActive ? "true" : "false");
-  });
-
-  if (button) button.setAttribute("aria-label", `Select language, current: ${current.menuLabel}`);
-}
-
-function closeLanguageDropdown() {
-  const dropdown = document.getElementById("languageDropdown");
-  const button = document.getElementById("languageButton");
-  if (!dropdown) return;
-
-  dropdown.classList.remove("is-open");
-  if (button) button.setAttribute("aria-expanded", "false");
-}
-
 function initLanguageSelector() {
   const selector = document.getElementById("languageSelect");
-  const dropdown = document.getElementById("languageDropdown");
-  const button = document.getElementById("languageButton");
-  const options = document.querySelectorAll(".language-option");
+  if (!selector) return;
 
-  if (selector) {
-    selector.value = currentLanguage;
-    selector.addEventListener("change", event => setLanguage(event.target.value));
-  }
-
-  if (!dropdown || !button || !options.length) {
-    updateLanguageDropdown();
-    return;
-  }
-
-  button.addEventListener("click", event => {
-    event.stopPropagation();
-    const isOpen = dropdown.classList.toggle("is-open");
-    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  });
-
-  options.forEach(option => {
-    option.addEventListener("click", event => {
-      event.stopPropagation();
-      setLanguage(option.dataset.lang);
-      closeLanguageDropdown();
-    });
-  });
-
-  document.addEventListener("click", closeLanguageDropdown);
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeLanguageDropdown();
-  });
-
-  updateLanguageDropdown();
+  selector.value = currentLanguage;
+  selector.addEventListener("change", event => setLanguage(event.target.value));
 }
