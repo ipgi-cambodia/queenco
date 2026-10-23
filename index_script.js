@@ -165,7 +165,10 @@ async function renderPointsRace() {
   if (!tableHead || !tableBody) return;
 
   try {
-    const response = await fetch("pointsrace.json");
+    const response = await fetch(
+    `pointsrace.json?t=${Date.now()}`,
+    { cache: "no-store" }
+    );
     if (!response.ok) throw new Error("Unable to load pointsrace.json");
 
     const data = await response.json();
