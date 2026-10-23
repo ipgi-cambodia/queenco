@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23 14:45",
+  "updatedAt": "2026-10-24 06:08",
   "headers": [
     "Rank",
     "Membership#",
@@ -12,56 +12,56 @@
   "participants": [
     {
       "rank": 1,
-      "membershipNo": "3118",
+      "membershipNo": "2809",
       "prizes": "$1,888.00",
-      "points": 36937,
+      "points": 62006,
       "pointsLevelFor2xMultiplier": 100000,
-      "pointsLevelForMultiplier": -63063,
+      "pointsLevelForMultiplier": -37994,
       "newPrizes": "$3,776.00"
     },
     {
       "rank": 2,
-      "membershipNo": "2599",
+      "membershipNo": "3118",
       "prizes": "$1,088.00",
-      "points": 31740,
+      "points": 61517,
       "pointsLevelFor2xMultiplier": 50000,
-      "pointsLevelForMultiplier": -18260,
+      "pointsLevelForMultiplier": 11517,
       "newPrizes": "$2,176.00"
     },
     {
       "rank": 3,
-      "membershipNo": "2809",
+      "membershipNo": "2599",
       "prizes": "$888.00",
-      "points": 25343,
+      "points": 44471,
       "pointsLevelFor2xMultiplier": 25000,
-      "pointsLevelForMultiplier": 343,
+      "pointsLevelForMultiplier": 19471,
       "newPrizes": "$1,776.00"
     },
     {
       "rank": 4,
       "membershipNo": "1495",
       "prizes": "$588.00",
-      "points": 15286,
+      "points": 20351,
       "pointsLevelFor2xMultiplier": 20000,
-      "pointsLevelForMultiplier": -4714,
+      "pointsLevelForMultiplier": 351,
       "newPrizes": "$1,176.00"
     },
     {
       "rank": 5,
       "membershipNo": "2591",
       "prizes": "$388.00",
-      "points": 13281,
+      "points": 13717,
       "pointsLevelFor2xMultiplier": 10000,
-      "pointsLevelForMultiplier": 3281,
+      "pointsLevelForMultiplier": 3717,
       "newPrizes": "$776.00"
     },
     {
       "rank": 6,
       "membershipNo": "2267",
       "prizes": "$188.00",
-      "points": 8006,
+      "points": 12571,
       "pointsLevelFor2xMultiplier": 9000,
-      "pointsLevelForMultiplier": -994,
+      "pointsLevelForMultiplier": 3571,
       "newPrizes": "$376.00"
     },
     {
