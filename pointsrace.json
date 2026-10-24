@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24 06:08",
+  "updatedAt": "2026-10-25 06:01",
   "headers": [
     "Rank",
     "Membership#",
@@ -14,63 +14,63 @@
       "rank": 1,
       "membershipNo": "2809",
       "prizes": "$1,888.00",
-      "points": 62006,
+      "points": 86330,
       "pointsLevelFor2xMultiplier": 100000,
-      "pointsLevelForMultiplier": -37994,
+      "pointsLevelForMultiplier": -13670,
       "newPrizes": "$3,776.00"
     },
     {
       "rank": 2,
       "membershipNo": "3118",
       "prizes": "$1,088.00",
-      "points": 61517,
+      "points": 63868,
       "pointsLevelFor2xMultiplier": 50000,
-      "pointsLevelForMultiplier": 11517,
+      "pointsLevelForMultiplier": 13868,
       "newPrizes": "$2,176.00"
     },
     {
       "rank": 3,
       "membershipNo": "2599",
       "prizes": "$888.00",
-      "points": 44471,
+      "points": 48766,
       "pointsLevelFor2xMultiplier": 25000,
-      "pointsLevelForMultiplier": 19471,
+      "pointsLevelForMultiplier": 23766,
       "newPrizes": "$1,776.00"
     },
     {
       "rank": 4,
       "membershipNo": "1495",
       "prizes": "$588.00",
-      "points": 20351,
+      "points": 20387,
       "pointsLevelFor2xMultiplier": 20000,
-      "pointsLevelForMultiplier": 351,
+      "pointsLevelForMultiplier": 387,
       "newPrizes": "$1,176.00"
     },
     {
       "rank": 5,
       "membershipNo": "2591",
       "prizes": "$388.00",
-      "points": 13717,
+      "points": 17766,
       "pointsLevelFor2xMultiplier": 10000,
-      "pointsLevelForMultiplier": 3717,
+      "pointsLevelForMultiplier": 7766,
       "newPrizes": "$776.00"
     },
     {
       "rank": 6,
       "membershipNo": "2267",
       "prizes": "$188.00",
-      "points": 12571,
+      "points": 13126,
       "pointsLevelFor2xMultiplier": 9000,
-      "pointsLevelForMultiplier": 3571,
+      "pointsLevelForMultiplier": 4126,
       "newPrizes": "$376.00"
     },
     {
       "rank": 7,
-      "membershipNo": "1793",
+      "membershipNo": "1744",
       "prizes": "$88.00",
-      "points": 7068,
+      "points": 7604,
       "pointsLevelFor2xMultiplier": 8000,
-      "pointsLevelForMultiplier": -932,
+      "pointsLevelForMultiplier": -396,
       "newPrizes": "$176.00"
     }
   ]
