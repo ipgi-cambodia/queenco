@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29 06:06",
+  "updatedAt": "2026-10-30 05:25",
   "headers": [
     "Rank",
     "Membership#",
@@ -21,56 +21,56 @@
     },
     {
       "rank": 2,
-      "membershipNo": "2599",
+      "membershipNo": "2746",
       "prizes": "$1,088.00",
-      "points": 13535,
+      "points": 15348,
       "pointsLevelFor2xMultiplier": 50000,
-      "pointsLevelForMultiplier": -36465,
+      "pointsLevelForMultiplier": -34652,
       "newPrizes": "$2,176.00"
     },
     {
       "rank": 3,
-      "membershipNo": "2746",
+      "membershipNo": "2599",
       "prizes": "$888.00",
-      "points": 9727,
+      "points": 13610,
       "pointsLevelFor2xMultiplier": 25000,
-      "pointsLevelForMultiplier": -15273,
+      "pointsLevelForMultiplier": -11390,
       "newPrizes": "$1,776.00"
     },
     {
       "rank": 4,
-      "membershipNo": "3137",
+      "membershipNo": "3118",
       "prizes": "$588.00",
-      "points": 8172,
+      "points": 9015,
       "pointsLevelFor2xMultiplier": 20000,
-      "pointsLevelForMultiplier": -11828,
+      "pointsLevelForMultiplier": -10985,
       "newPrizes": "$1,176.00"
     },
     {
       "rank": 5,
-      "membershipNo": "3118",
+      "membershipNo": "3137",
       "prizes": "$388.00",
-      "points": 7192,
+      "points": 8172,
       "pointsLevelFor2xMultiplier": 10000,
-      "pointsLevelForMultiplier": -2808,
+      "pointsLevelForMultiplier": -1828,
       "newPrizes": "$776.00"
     },
     {
       "rank": 6,
       "membershipNo": "2519",
       "prizes": "$188.00",
-      "points": 5693,
+      "points": 6089,
       "pointsLevelFor2xMultiplier": 9000,
-      "pointsLevelForMultiplier": -3307,
+      "pointsLevelForMultiplier": -2911,
       "newPrizes": "$376.00"
     },
     {
       "rank": 7,
       "membershipNo": "1813",
       "prizes": "$88.00",
-      "points": 4492,
+      "points": 4662,
       "pointsLevelFor2xMultiplier": 8000,
-      "pointsLevelForMultiplier": -3508,
+      "pointsLevelForMultiplier": -3338,
       "newPrizes": "$176.00"
     }
   ]
