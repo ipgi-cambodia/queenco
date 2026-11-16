@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16 06:10",
+  "updatedAt": "2026-11-17 06:07",
   "headers": [
     "Rank",
     "Membership#",
@@ -12,65 +12,65 @@
   "participants": [
     {
       "rank": 1,
-      "membershipNo": "2809",
+      "membershipNo": "0479",
       "prizes": "$1,888.00",
-      "points": 29349,
+      "points": 141059,
       "pointsLevelFor2xMultiplier": 100000,
-      "pointsLevelForMultiplier": -70651,
+      "pointsLevelForMultiplier": 41059,
       "newPrizes": "$3,776.00"
     },
     {
       "rank": 2,
-      "membershipNo": "3123",
+      "membershipNo": "2809",
       "prizes": "$1,088.00",
-      "points": 3764,
+      "points": 61173,
       "pointsLevelFor2xMultiplier": 50000,
-      "pointsLevelForMultiplier": -46236,
+      "pointsLevelForMultiplier": 11173,
       "newPrizes": "$2,176.00"
     },
     {
       "rank": 3,
       "membershipNo": "1813",
       "prizes": "$888.00",
-      "points": 2163,
+      "points": 5516,
       "pointsLevelFor2xMultiplier": 25000,
-      "pointsLevelForMultiplier": -22837,
+      "pointsLevelForMultiplier": -19484,
       "newPrizes": "$1,776.00"
     },
     {
       "rank": 4,
-      "membershipNo": "0308",
+      "membershipNo": "3123",
       "prizes": "$588.00",
-      "points": 1247,
+      "points": 3764,
       "pointsLevelFor2xMultiplier": 20000,
-      "pointsLevelForMultiplier": -18753,
+      "pointsLevelForMultiplier": -16236,
       "newPrizes": "$1,176.00"
     },
     {
       "rank": 5,
-      "membershipNo": "0531",
+      "membershipNo": "1500",
       "prizes": "$388.00",
-      "points": 1164,
+      "points": 2667,
       "pointsLevelFor2xMultiplier": 10000,
-      "pointsLevelForMultiplier": -8836,
+      "pointsLevelForMultiplier": -7333,
       "newPrizes": "$776.00"
     },
     {
       "rank": 6,
-      "membershipNo": "2519",
+      "membershipNo": "0308",
       "prizes": "$188.00",
-      "points": 934,
+      "points": 2498,
       "pointsLevelFor2xMultiplier": 9000,
-      "pointsLevelForMultiplier": -8066,
+      "pointsLevelForMultiplier": -6502,
       "newPrizes": "$376.00"
     },
     {
       "rank": 7,
-      "membershipNo": "3014",
+      "membershipNo": "0531",
       "prizes": "$88.00",
-      "points": 769,
+      "points": 1200,
       "pointsLevelFor2xMultiplier": 8000,
-      "pointsLevelForMultiplier": -7231,
+      "pointsLevelForMultiplier": -6800,
       "newPrizes": "$176.00"
     }
   ]
