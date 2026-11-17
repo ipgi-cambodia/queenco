@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17 06:07",
+  "updatedAt": "2026-11-18 06:07",
   "headers": [
     "Rank",
     "Membership#",
@@ -14,9 +14,9 @@
       "rank": 1,
       "membershipNo": "0479",
       "prizes": "$1,888.00",
-      "points": 141059,
+      "points": 141913,
       "pointsLevelFor2xMultiplier": 100000,
-      "pointsLevelForMultiplier": 41059,
+      "pointsLevelForMultiplier": 41913,
       "newPrizes": "$3,776.00"
     },
     {
@@ -32,45 +32,45 @@
       "rank": 3,
       "membershipNo": "1813",
       "prizes": "$888.00",
-      "points": 5516,
+      "points": 12205,
       "pointsLevelFor2xMultiplier": 25000,
-      "pointsLevelForMultiplier": -19484,
+      "pointsLevelForMultiplier": -12795,
       "newPrizes": "$1,776.00"
     },
     {
       "rank": 4,
-      "membershipNo": "3123",
+      "membershipNo": "3160",
       "prizes": "$588.00",
-      "points": 3764,
+      "points": 11405,
       "pointsLevelFor2xMultiplier": 20000,
-      "pointsLevelForMultiplier": -16236,
+      "pointsLevelForMultiplier": -8595,
       "newPrizes": "$1,176.00"
     },
     {
       "rank": 5,
       "membershipNo": "1500",
       "prizes": "$388.00",
-      "points": 2667,
+      "points": 4137,
       "pointsLevelFor2xMultiplier": 10000,
-      "pointsLevelForMultiplier": -7333,
+      "pointsLevelForMultiplier": -5863,
       "newPrizes": "$776.00"
     },
     {
       "rank": 6,
-      "membershipNo": "0308",
+      "membershipNo": "3123",
       "prizes": "$188.00",
-      "points": 2498,
+      "points": 3764,
       "pointsLevelFor2xMultiplier": 9000,
-      "pointsLevelForMultiplier": -6502,
+      "pointsLevelForMultiplier": -5236,
       "newPrizes": "$376.00"
     },
     {
       "rank": 7,
-      "membershipNo": "0531",
+      "membershipNo": "0308",
       "prizes": "$88.00",
-      "points": 1200,
+      "points": 3760,
       "pointsLevelFor2xMultiplier": 8000,
-      "pointsLevelForMultiplier": -6800,
+      "pointsLevelForMultiplier": -4240,
       "newPrizes": "$176.00"
     }
   ]
