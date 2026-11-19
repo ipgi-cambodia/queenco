@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19 05:58",
+  "updatedAt": "2026-11-20 06:05",
   "headers": [
     "Rank",
     "Membership#",
@@ -32,9 +32,9 @@
       "rank": 3,
       "membershipNo": "1813",
       "prizes": "$888.00",
-      "points": 17403,
+      "points": 31914,
       "pointsLevelFor2xMultiplier": 25000,
-      "pointsLevelForMultiplier": -7597,
+      "pointsLevelForMultiplier": 6914,
       "newPrizes": "$1,776.00"
     },
     {
@@ -50,9 +50,9 @@
       "rank": 5,
       "membershipNo": "1500",
       "prizes": "$388.00",
-      "points": 5565,
+      "points": 5943,
       "pointsLevelFor2xMultiplier": 10000,
-      "pointsLevelForMultiplier": -4435,
+      "pointsLevelForMultiplier": -4057,
       "newPrizes": "$776.00"
     },
     {
@@ -66,11 +66,11 @@
     },
     {
       "rank": 7,
-      "membershipNo": "3123",
+      "membershipNo": "2746",
       "prizes": "$88.00",
-      "points": 3764,
+      "points": 4710,
       "pointsLevelFor2xMultiplier": 8000,
-      "pointsLevelForMultiplier": -4236,
+      "pointsLevelForMultiplier": -3290,
       "newPrizes": "$176.00"
     }
   ]
